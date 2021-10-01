@@ -39,7 +39,7 @@ extension UIView {
         self.widthAnchor.constraint(equalToConstant: constant).isActive = true
     }
     
-    func customConstraints(to superView: UIView, top: CGFloat = 0, bottom: CGFloat = 0, leading: CGFloat = 0, tralling: CGFloat = 0) {
+    func allConstraints(to superView: UIView, top: CGFloat = 0, bottom: CGFloat = 0, leading: CGFloat = 0, tralling: CGFloat = 0) {
         precondition(!translatesAutoresizingMaskIntoConstraints, autoLayoutIsDisabledError)
 
         self.topAnchor.constraint(equalTo: superView.topAnchor, constant: top).isActive = true
