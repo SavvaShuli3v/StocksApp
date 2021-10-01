@@ -125,8 +125,7 @@ extension MainStocksTableView: UITableViewDelegate, UITableViewDataSource {
        
        weak var searchCell = self.cellForRow(at: IndexPath(item: 0, section: 0))
        weak var header = self.headerView(forSection: 1) as? MainStocksHeader
-       
-       print(y)
+
        if y > -18 {
            searchCell?.alpha = 1 - (y + 18)/10
        } else {

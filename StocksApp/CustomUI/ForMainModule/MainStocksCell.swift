@@ -9,6 +9,10 @@ import UIKit
 
 final class MainStocksCell: UITableViewCell {
     
+    private var stock: Stock?
+    
+    private lazy var stockButton = AnimatedStockButton()
+    
     private lazy var detailView = UIView()
     
     private lazy var companyLogo = UIImageView()
@@ -33,6 +37,7 @@ final class MainStocksCell: UITableViewCell {
     // MARK: - Public Methods
     
     func set(stock: Stock) {
+        self.stock = stock
         
         self.ticker.text = stock.ticker
         self.companyName.text = stock.companyName
@@ -63,6 +68,20 @@ final class MainStocksCell: UITableViewCell {
         setupPrice()
         setupChangePrice()
 
+        setupStockButton()
+    }
+    
+    private func setupStockButton() {
+        self.contentView.addSubview(stockButton)
+        self.stockButton.translatesAutoresizingMaskIntoConstraints = false
+        self.stockButton.allConstraints(to: contentView, top: 8, bottom: -8, leading: 16, tralling: -16)
+        self.stockButton.backgroundColor = .clear
+        self.stockButton.layer.cornerRadius = 16
+        
+        self.stockButton.setAction {
+            print(self.stock?.ticker ?? "")
+            print("жмяк")
+        }
     }
 
     private func setupDetailView() {
@@ -155,6 +174,5 @@ final class MainStocksCell: UITableViewCell {
             self.changePrice.textColor = Styles.Colors.red
         }
     }
-
-
+    
 }

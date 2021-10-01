@@ -8,20 +8,25 @@
 import UIKit
 
 protocol MainViewProtocol: AnyObject {
-    
+    func getStocks(stocks: [Stock], favouriteStocks: [Stock])
 }
 
 protocol MainViewPresenterProtocol {
     init(view: MainViewProtocol)
-
+    func setStocks()
 }
 
 final class MainPresenter: MainViewPresenterProtocol {
+    
     weak var view: MainViewProtocol?
     
     required init(view: MainViewProtocol) {
         self.view = view
 
+    }
+    
+    func setStocks() {
+        self.view?.getStocks(stocks: stocks, favouriteStocks: favouriteStocks)
     }
 }
 
