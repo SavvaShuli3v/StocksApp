@@ -8,7 +8,7 @@
 import UIKit
 
 final class MainStocksTableView: UITableView, MainSearchCellProtocol, StocksHeaderProtocol {
-
+    
     var stocks = [Stock]()
     var favouriteStocks = [Stock]()
     
@@ -40,6 +40,10 @@ final class MainStocksTableView: UITableView, MainSearchCellProtocol, StocksHead
         
         self.register(MainSearchCell.self, forCellReuseIdentifier: CellID.searchCell)
         self.register(MainStocksCell.self, forCellReuseIdentifier: CellID.mainCell)
+    }
+    
+    override func touchesShouldCancel(in view: UIView) -> Bool {
+        return true
     }
     
 }
@@ -108,10 +112,10 @@ extension MainStocksTableView: UITableViewDelegate, UITableViewDataSource {
         let header = dequeueReusableHeaderFooterView(withIdentifier: HeaderID.mainStocksHeader) as! MainStocksHeader
         header.delegate = self
         return header
-
+        
     }
     
-
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 1 {
             return 50
@@ -121,57 +125,58 @@ extension MainStocksTableView: UITableViewDelegate, UITableViewDataSource {
     }
     
     // MARK: - Animate Methods
-   
-   private func setAlphaSearchCell(_ y: CGFloat) {
-       
-       weak var searchCell = self.cellForRow(at: IndexPath(item: 0, section: 0))
-       weak var header = self.headerView(forSection: 1) as? MainStocksHeader
-
-       if y > -18 {
-           searchCell?.alpha = 1 - (y + 18)/10
-       } else {
-           searchCell?.alpha = 1
-       }
-       
-       if y >= 25 {
-           header?.whiteView.alpha = 1
-       } else {
-           header?.whiteView.alpha = 0
-       }
-       
-       if y >= 35 && y < 37 {
-           header?.shadowView.alpha += y/150
-       } else if y >= 37 {
-           header?.shadowView.alpha = 1
-       } else {
-           header?.shadowView.alpha = 0
-       }
-   }
-   
-   private func scrollTo(_ y: CGFloat) {
-       
-       if y < 5  {
-           DispatchQueue.main.async {
-               self.scrollToRow(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
-           }
-       }
-       
-       if y >= 5 && y <= 30 {
-           DispatchQueue.main.async {
-               self.scrollToRow(at: IndexPath(item: 0, section: 1), at: .top, animated: true)
-           }
-       }
-       
-   }
-   
-   func scrollViewDidScroll(_ scrollView: UIScrollView) {
-       localTop = scrollView.contentOffset.y
-       setAlphaSearchCell(localTop)
-   }
-
-   func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-       scrollTo(localTop)
-   }
+    
+    private func setAlphaSearchCell(_ y: CGFloat) {
+        
+        weak var searchCell = self.cellForRow(at: IndexPath(item: 0, section: 0))
+        weak var header = self.headerView(forSection: 1) as? MainStocksHeader
+        
+        if y > -18 {
+            searchCell?.alpha = 1 - (y + 18)/10
+        } else {
+            searchCell?.alpha = 1
+        }
+        
+        if y >= 25 {
+            header?.whiteView.alpha = 1
+        } else {
+            header?.whiteView.alpha = 0
+        }
+        
+        if y >= 35 && y < 37 {
+            header?.shadowView.alpha += y/150
+        } else if y >= 37 {
+            header?.shadowView.alpha = 1
+        } else {
+            header?.shadowView.alpha = 0
+        }
+    }
+    
+    private func scrollTo(_ y: CGFloat) {
+        
+        if y < 5  {
+            DispatchQueue.main.async {
+                self.scrollToRow(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
+            }
+        }
+        
+        if y >= 5 && y <= 30 {
+            DispatchQueue.main.async {
+                self.scrollToRow(at: IndexPath(item: 0, section: 1), at: .top, animated: true)
+            }
+        }
+        
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        localTop = scrollView.contentOffset.y
+        setAlphaSearchCell(localTop)
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        scrollTo(localTop)
+    }
+    
 }
 
 // MARK: - SearchCell Binding
