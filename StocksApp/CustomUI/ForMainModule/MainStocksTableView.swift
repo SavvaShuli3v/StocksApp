@@ -29,6 +29,7 @@ final class MainStocksTableView: UITableView, MainSearchCellProtocol, StocksHead
     // MARK: - Private Methods
     
     private func setupTableView() {
+        self.backgroundColor = Styles.Colors.white
         self.separatorStyle = .none
         self.showsVerticalScrollIndicator = false
         

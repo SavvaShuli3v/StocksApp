@@ -26,6 +26,7 @@ final class MainStocksCell: UITableViewCell {
  
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.backgroundColor = Styles.Colors.white
         self.selectionStyle = .none
         setupCell()
     }
@@ -116,7 +117,7 @@ final class MainStocksCell: UITableViewCell {
         self.ticker.height(24)
         
         self.ticker.backgroundColor = .clear
-        self.ticker.tintColor = Styles.Colors.black
+        self.ticker.textColor = Styles.Colors.black
         self.ticker.font = UIFont.systemFont(ofSize: 18, weight: .bold)
     }
     
@@ -129,7 +130,7 @@ final class MainStocksCell: UITableViewCell {
         self.companyName.height(16)
         
         self.companyName.backgroundColor = .clear
-        self.companyName.tintColor = Styles.Colors.black
+        self.companyName.textColor = Styles.Colors.black
         self.companyName.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
     }
     
@@ -142,7 +143,7 @@ final class MainStocksCell: UITableViewCell {
         self.price.height(24)
         
         self.price.backgroundColor = .clear
-        self.price.tintColor = Styles.Colors.black
+        self.price.textColor = Styles.Colors.black
         self.price.textAlignment = .right
         self.price.font = UIFont.systemFont(ofSize: 18, weight: .bold)
     }
