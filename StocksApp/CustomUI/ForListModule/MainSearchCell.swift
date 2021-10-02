@@ -7,13 +7,13 @@
 
 import UIKit
 
-protocol MainSearchCellProtocol: AnyObject {
+protocol ListSearchCellProtocol: AnyObject {
     func didTapSearchButton()
 }
 
-final class MainSearchCell: UITableViewCell {
+final class ListSearchCell: UITableViewCell {
     
-    weak var delegate: MainSearchCellProtocol?
+    weak var delegate: ListSearchCellProtocol?
     
     private lazy var searchButton = SimpleButton()
     

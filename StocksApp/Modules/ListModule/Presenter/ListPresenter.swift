@@ -1,5 +1,5 @@
 //
-//  MainPresenter.swift
+//  ListPresenter.swift
 //  StocksApp
 //
 //  Created by Савва Шулятьев on 01.10.2021.
@@ -7,20 +7,20 @@
 
 import UIKit
 
-protocol MainViewProtocol: AnyObject {
+protocol ListViewProtocol: AnyObject {
     func getStocks(stocks: [Stock], favouriteStocks: [Stock])
 }
 
-protocol MainViewPresenterProtocol {
-    init(view: MainViewProtocol)
+protocol ListViewPresenterProtocol {
+    init(view: ListViewProtocol)
     func setStocks()
 }
 
-final class MainPresenter: MainViewPresenterProtocol {
+final class ListPresenter: ListViewPresenterProtocol {
     
-    weak var view: MainViewProtocol?
+    weak var view: ListViewProtocol?
     
-    required init(view: MainViewProtocol) {
+    required init(view: ListViewProtocol) {
         self.view = view
 
     }

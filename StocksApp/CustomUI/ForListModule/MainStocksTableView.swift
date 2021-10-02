@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class MainStocksTableView: UITableView, MainSearchCellProtocol, StocksHeaderProtocol {
+final class ListStocksTableView: UITableView, ListSearchCellProtocol, StocksHeaderProtocol {
     
     var stocks = [Stock]()
     var favouriteStocks = [Stock]()
@@ -36,10 +36,10 @@ final class MainStocksTableView: UITableView, MainSearchCellProtocol, StocksHead
         self.delegate = self
         self.dataSource = self
         
-        self.register(MainStocksHeader.self, forHeaderFooterViewReuseIdentifier: HeaderID.mainStocksHeader)
+        self.register(ListStocksHeader.self, forHeaderFooterViewReuseIdentifier: HeaderID.mainStocksHeader)
         
-        self.register(MainSearchCell.self, forCellReuseIdentifier: CellID.searchCell)
-        self.register(MainStocksCell.self, forCellReuseIdentifier: CellID.mainCell)
+        self.register(ListSearchCell.self, forCellReuseIdentifier: CellID.searchCell)
+        self.register(ListStocksCell.self, forCellReuseIdentifier: CellID.mainCell)
     }
     
     override func touchesShouldCancel(in view: UIView) -> Bool {
@@ -50,7 +50,7 @@ final class MainStocksTableView: UITableView, MainSearchCellProtocol, StocksHead
 
 // MARK: - UITableViewDelegate, UITableViewDataSource
 
-extension MainStocksTableView: UITableViewDelegate, UITableViewDataSource {
+extension ListStocksTableView: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         2
@@ -75,11 +75,11 @@ extension MainStocksTableView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
-            let cell = dequeueReusableCell(withIdentifier: CellID.searchCell, for: indexPath) as! MainSearchCell
+            let cell = dequeueReusableCell(withIdentifier: CellID.searchCell, for: indexPath) as! ListSearchCell
             cell.delegate = self
             return cell
         default:
-            let cell = dequeueReusableCell(withIdentifier: CellID.mainCell, for: indexPath) as! MainStocksCell
+            let cell = dequeueReusableCell(withIdentifier: CellID.mainCell, for: indexPath) as! ListStocksCell
             switch isStocks {
             case true:
                 cell.set(stock: stocks[indexPath.row])
@@ -109,7 +109,7 @@ extension MainStocksTableView: UITableViewDelegate, UITableViewDataSource {
     // MARK: - HeaderSettings
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = dequeueReusableHeaderFooterView(withIdentifier: HeaderID.mainStocksHeader) as! MainStocksHeader
+        let header = dequeueReusableHeaderFooterView(withIdentifier: HeaderID.mainStocksHeader) as! ListStocksHeader
         header.delegate = self
         return header
         
@@ -129,7 +129,7 @@ extension MainStocksTableView: UITableViewDelegate, UITableViewDataSource {
     private func setAlphaSearchCell(_ y: CGFloat) {
         
         weak var searchCell = self.cellForRow(at: IndexPath(item: 0, section: 0))
-        weak var header = self.headerView(forSection: 1) as? MainStocksHeader
+        weak var header = self.headerView(forSection: 1) as? ListStocksHeader
         
         if y > -18 {
             searchCell?.alpha = 1 - (y + 18)/10
@@ -181,7 +181,7 @@ extension MainStocksTableView: UITableViewDelegate, UITableViewDataSource {
 
 // MARK: - SearchCell Binding
 
-extension MainStocksTableView {
+extension ListStocksTableView {
     
     func didTapSearchButton() {
         print("Search tapped (tableView)")
@@ -190,7 +190,7 @@ extension MainStocksTableView {
 
 // MARK: - MainHeader Binding
 
-extension MainStocksTableView {
+extension ListStocksTableView {
     
     func tapStoksButton() {
         print("Tapped stocks (tableView)")

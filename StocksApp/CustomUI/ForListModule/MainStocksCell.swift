@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class MainStocksCell: UITableViewCell {
+final class ListStocksCell: UITableViewCell {
     
     private var stock: Stock?
     

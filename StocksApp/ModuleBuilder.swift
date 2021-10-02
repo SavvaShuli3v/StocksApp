@@ -8,14 +8,14 @@
 import UIKit
 
 protocol Builder {
-    static func createMain() -> UIViewController
+    static func createList() -> UIViewController
 }
 
 class ModuleBuilder: Builder {
     
-    static func createMain() -> UIViewController {
-        let view = MainViewController()
-        let presenter = MainPresenter(view: view)
+    static func createList() -> UIViewController {
+        let view = ListViewController()
+        let presenter = ListPresenter(view: view)
         view.presenter = presenter
         return view
     }

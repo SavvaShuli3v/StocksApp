@@ -12,7 +12,7 @@ protocol StocksHeaderProtocol: AnyObject {
     func tapFavoriteButton()
 }
 
-final class MainStocksHeader: UITableViewHeaderFooterView {
+final class ListStocksHeader: UITableViewHeaderFooterView {
     
     weak var delegate: StocksHeaderProtocol?
 

@@ -1,5 +1,5 @@
 //
-//  MainViewController.swift
+//  ListViewController.swift
 //  StocksApp
 //
 //  Created by Савва Шулятьев on 01.10.2021.
@@ -7,11 +7,11 @@
 
 import UIKit
 
-final class MainViewController: UIViewController {
+final class ListViewController: UIViewController {
     
-    var presenter: MainViewPresenterProtocol!
+    var presenter: ListViewPresenterProtocol!
     
-    private lazy var mainTableView = MainStocksTableView()
+    private lazy var mainTableView = ListStocksTableView()
 
     // MARK: - Lifecycle
     
@@ -40,7 +40,7 @@ final class MainViewController: UIViewController {
 
 // MARK: - Presenter Binding
 
-extension MainViewController: MainViewProtocol {
+extension ListViewController: ListViewProtocol {
     func getStocks(stocks: [Stock], favouriteStocks: [Stock]) {
         self.mainTableView.stocks = stocks
         self.mainTableView.favouriteStocks = favouriteStocks
