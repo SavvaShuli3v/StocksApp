@@ -22,7 +22,6 @@ final class ListPresenter: ListViewPresenterProtocol {
     
     required init(view: ListViewProtocol) {
         self.view = view
-
     }
     
     func setStocks() {

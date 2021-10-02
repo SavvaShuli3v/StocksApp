@@ -7,8 +7,13 @@
 
 import UIKit
 
+protocol ListStocksCellProtocol: AnyObject {
+    func tappedToCell(with stock: Stock)
+}
+
 final class ListStocksCell: UITableViewCell {
     
+    weak var delegate: ListStocksCellProtocol?
     private var stock: Stock?
     
     private lazy var stockButton = AnimatedStockButton()
@@ -80,8 +85,7 @@ final class ListStocksCell: UITableViewCell {
         self.stockButton.layer.cornerRadius = 16
         
         self.stockButton.setAction {
-            print(self.stock?.ticker ?? "")
-            print("жмяк")
+            self.delegate?.tappedToCell(with: self.stock!)
         }
     }
 

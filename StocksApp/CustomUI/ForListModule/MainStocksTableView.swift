@@ -7,7 +7,16 @@
 
 import UIKit
 
-final class ListStocksTableView: UITableView, ListSearchCellProtocol, StocksHeaderProtocol {
+protocol ListTableViewProtocol: AnyObject {
+    func didTapSearch()
+    func didTapStocks()
+    func didTapFavourite()
+    func didTapToCell(with stock: Stock)
+}
+
+final class ListStocksTableView: UITableView {
+    
+    weak var answerDelegate: ListTableViewProtocol?
     
     var stocks = [Stock]()
     var favouriteStocks = [Stock]()
@@ -84,6 +93,7 @@ extension ListStocksTableView: UITableViewDelegate, UITableViewDataSource {
             case true:
                 cell.set(stock: stocks[indexPath.row])
                 cell.setColor(to: indexPath as NSIndexPath)
+                cell.delegate = self
                 return cell
             case false:
                 cell.set(stock: favouriteStocks[indexPath.row])
@@ -181,25 +191,33 @@ extension ListStocksTableView: UITableViewDelegate, UITableViewDataSource {
 
 // MARK: - SearchCell Binding
 
-extension ListStocksTableView {
+extension ListStocksTableView: ListSearchCellProtocol {
     
     func didTapSearchButton() {
-        print("Search tapped (tableView)")
+        self.answerDelegate?.didTapSearch()
     }
 }
 
 // MARK: - MainHeader Binding
 
-extension ListStocksTableView {
+extension ListStocksTableView: StocksHeaderProtocol {
     
     func tapStoksButton() {
-        print("Tapped stocks (tableView)")
+        self.answerDelegate?.didTapStocks()
     }
     
     func tapFavoriteButton() {
-        print("Tapped stocks (tableView)")
+        self.answerDelegate?.didTapFavourite()
     }
+}
+
+// MARK: - MainCell Binding
+
+extension ListStocksTableView: ListStocksCellProtocol {
     
+    func tappedToCell(with stock: Stock) {
+        self.answerDelegate?.didTapToCell(with: stock)
+    }
 }
 
 // MARK: - HeaderID, CellID
