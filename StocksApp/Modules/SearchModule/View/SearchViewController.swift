@@ -15,10 +15,15 @@ final class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        setupUI()
+    }
+    
+    // MARK: - Private Methods
+    
+    private func setupUI() {
         view.backgroundColor = Styles.Colors.white
         setupButton()
-        
     }
     
     private func setupButton() {

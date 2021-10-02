@@ -23,6 +23,7 @@ final class ListStocksTableView: UITableView {
     
     var isStocks = true
     private var localTop: CGFloat = 0
+    private var localScrollTop: CGFloat?
     
     // MARK: - Init
     
@@ -137,6 +138,14 @@ extension ListStocksTableView: UITableViewDelegate, UITableViewDataSource {
     // MARK: - Animate Methods
     
     private func setAlphaSearchCell(_ y: CGFloat) {
+        print(y) // -20
+        // -47
+        // set = -48    (-48)  -48...-18  dif = 30
+        // -20...10
+        if localScrollTop == nil {
+            localScrollTop = y
+        }
+        print(localScrollTop)
         
         weak var searchCell = self.cellForRow(at: IndexPath(item: 0, section: 0))
         weak var header = self.headerView(forSection: 1) as? ListStocksHeader
