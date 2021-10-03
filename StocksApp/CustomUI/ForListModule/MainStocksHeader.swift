@@ -99,15 +99,15 @@ final class ListStocksHeader: UITableViewHeaderFooterView {
         self.whiteView.trailing(0, to: self.trailingAnchor)
         self.whiteView.height(50)
         
-        self.whiteView.backgroundColor = .white
+        self.whiteView.backgroundColor = Styles.Colors.white
         self.whiteView.alpha = 0
     }
     
     private func setupStocksButton() {
-        self.addSubview(stocksButton)
+        self.contentView.addSubview(stocksButton)
         self.stocksButton.translatesAutoresizingMaskIntoConstraints = false
         self.stocksButton.leading(20, to: self.leadingAnchor)
-        self.stocksButton.bottom(-12, to: self.bottomAnchor)
+        self.stocksButton.bottom(-20, to: self.bottomAnchor)
         heightForSearch = self.stocksButton.heightAnchor.constraint(equalToConstant: 32)
         widthForSearch = self.stocksButton.widthAnchor.constraint(equalToConstant: 98)
         heightForSearch?.isActive = true
@@ -124,10 +124,10 @@ final class ListStocksHeader: UITableViewHeaderFooterView {
     }
     
     private func setupFavouriteButton() {
-        self.addSubview(favouriteButton)
+        self.contentView.addSubview(favouriteButton)
         self.favouriteButton.translatesAutoresizingMaskIntoConstraints = false
         self.favouriteButton.leading(20, to: self.stocksButton.trailingAnchor)
-        self.favouriteButton.bottom(-12, to: self.bottomAnchor)
+        self.favouriteButton.bottom(-20, to: self.contentView.bottomAnchor)
         heightForFavourite = self.favouriteButton.heightAnchor.constraint(equalToConstant: 24)
         widthForFavourite = self.favouriteButton.widthAnchor.constraint(equalToConstant: 89)
         heightForFavourite?.isActive = true

@@ -26,6 +26,7 @@
 		4DAEE81127078C29008D1D77 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAEE81027078C29008D1D77 /* ListViewController.swift */; };
 		4DAEE81327078F22008D1D77 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 4DAEE81227078F22008D1D77 /* .gitignore */; };
 		4DAEE8192707903A008D1D77 /* MainStocksTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAEE81827079039008D1D77 /* MainStocksTableView.swift */; };
+		4DEDF36C2709CCDD0080BF87 /* testFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DEDF36B2709CCDD0080BF87 /* testFooter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		4DAEE81027078C29008D1D77 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		4DAEE81227078F22008D1D77 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		4DAEE81827079039008D1D77 /* MainStocksTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainStocksTableView.swift; sourceTree = "<group>"; };
+		4DEDF36B2709CCDD0080BF87 /* testFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testFooter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -262,6 +264,7 @@
 				4D34666627079591003B4A99 /* MainSearchCell.swift */,
 				4D3466742707A283003B4A99 /* MainStocksCell.swift */,
 				4D34667E2707D2E3003B4A99 /* AnimatedStockButton.swift */,
+				4DEDF36B2709CCDD0080BF87 /* testFooter.swift */,
 			);
 			path = ForListModule;
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DEDF36C2709CCDD0080BF87 /* testFooter.swift in Sources */,
 				4D34666F27079858003B4A99 /* Styles.swift in Sources */,
 				4D3466772707A4EA003B4A99 /* ListModel.swift in Sources */,
 				4D3466612707923B003B4A99 /* ListPresenter.swift in Sources */,

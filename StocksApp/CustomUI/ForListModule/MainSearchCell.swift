@@ -23,7 +23,6 @@ final class ListSearchCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.backgroundColor = Styles.Colors.white
         self.selectionStyle = .none
-        
         setupButton()
     }
     
@@ -36,7 +35,7 @@ final class ListSearchCell: UITableViewCell {
     private func setupButton() {
         self.contentView.addSubview(searchButton)
         self.searchButton.translatesAutoresizingMaskIntoConstraints = false
-        self.searchButton.top(16, to: self.topAnchor)
+        self.searchButton.top(0, to: self.topAnchor)
         self.searchButton.leading(16, to: self.leadingAnchor)
         self.searchButton.trailing(-16, to: self.trailingAnchor)
         self.searchButton.height(48)

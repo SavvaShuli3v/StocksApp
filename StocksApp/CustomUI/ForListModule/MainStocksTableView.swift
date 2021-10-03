@@ -109,7 +109,7 @@ extension ListStocksTableView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
         case 0:
-            return 80
+            return 48
         case 1:
             return 84
         default:
@@ -120,16 +120,22 @@ extension ListStocksTableView: UITableViewDelegate, UITableViewDataSource {
     // MARK: - HeaderSettings
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = dequeueReusableHeaderFooterView(withIdentifier: HeaderID.mainStocksHeader) as! ListStocksHeader
-        header.delegate = self
-        return header
+        switch section {
+        case 0:
+            return nil
+        case 1:
+            let header = dequeueReusableHeaderFooterView(withIdentifier: HeaderID.mainStocksHeader) as! ListStocksHeader
+            header.delegate = self
+            return header
+        default:
+            return nil
+        }
         
-    }
-    
+    }    
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 1 {
-            return 50
+            return 60
         } else {
             return 0
         }
@@ -145,7 +151,7 @@ extension ListStocksTableView: UITableViewDelegate, UITableViewDataSource {
         if localScrollTop == nil {
             localScrollTop = y
         }
-        print(localScrollTop)
+        //print(localScrollTop)
         
         weak var searchCell = self.cellForRow(at: IndexPath(item: 0, section: 0))
         weak var header = self.headerView(forSection: 1) as? ListStocksHeader
@@ -162,28 +168,28 @@ extension ListStocksTableView: UITableViewDelegate, UITableViewDataSource {
             header?.whiteView.alpha = 0
         }
         
-        if y >= 35 && y < 37 {
-            header?.shadowView.alpha += y/150
-        } else if y >= 37 {
-            header?.shadowView.alpha = 1
-        } else {
-            header?.shadowView.alpha = 0
-        }
+//        if y >= 35 && y < 37 {
+//            header?.shadowView.alpha += y/150
+//        } else if y >= 37 {
+//            header?.shadowView.alpha = 1
+//        } else {
+//            header?.shadowView.alpha = 1
+//        }
     }
     
     private func scrollTo(_ y: CGFloat) {
         
-        if y < 5  {
-            DispatchQueue.main.async {
-                self.scrollToRow(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
-            }
-        }
-        
-        if y >= 5 && y <= 30 {
-            DispatchQueue.main.async {
-                self.scrollToRow(at: IndexPath(item: 0, section: 1), at: .top, animated: true)
-            }
-        }
+//        if y < 5  {
+//            DispatchQueue.main.async {
+//                self.scrollToRow(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
+//            }
+//        }
+//
+//        if y >= 5 && y <= 30 {
+//            DispatchQueue.main.async {
+//                self.scrollToRow(at: IndexPath(item: 0, section: 1), at: .top, animated: true)
+//            }
+//        }
         
     }
     
