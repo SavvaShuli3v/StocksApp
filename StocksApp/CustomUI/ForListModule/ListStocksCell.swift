@@ -1,5 +1,5 @@
 //
-//  MainStocksCell.swift
+//  ListStocksCell.swift
 //  StocksApp
 //
 //  Created by Савва Шулятьев on 01.10.2021.

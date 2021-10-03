@@ -31,7 +31,7 @@ final class SearchViewController: UIViewController {
     private func setupButton() {
         self.view.addSubview(searchButton)
         self.searchButton.translatesAutoresizingMaskIntoConstraints = false
-        self.searchButton.top(16, to: self.view.safeAreaLayoutGuide.topAnchor)
+        self.searchButton.top(22, to: self.view.safeAreaLayoutGuide.topAnchor)
         self.searchButton.leading(16, to: self.view.leadingAnchor)
         self.searchButton.trailing(-16, to: self.view.trailingAnchor)
         self.searchButton.height(48)
