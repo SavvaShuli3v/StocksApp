@@ -144,52 +144,58 @@ extension ListStocksTableView: UITableViewDelegate, UITableViewDataSource {
     // MARK: - Animate Methods
     
     private func setAlphaSearchCell(_ y: CGFloat) {
-        print(y) // -20
-        // -47
-        // set = -48    (-48)  -48...-18  dif = 30
-        // -20...10
+        print(y) // -48 - 150 = 198
+        
         if localScrollTop == nil {
-            localScrollTop = y
+            if y >= 0 {
+                localScrollTop = y
+            } else {
+                localScrollTop = -y
+            }
         }
-        //print(localScrollTop)
+        
+        let localY = y + localScrollTop!
+        print(localY)
         
         weak var searchCell = self.cellForRow(at: IndexPath(item: 0, section: 0))
         weak var header = self.headerView(forSection: 1) as? ListStocksHeader
         
-        if y > -18 {
-            searchCell?.alpha = 1 - (y + 18)/10
+        if localY > 30 {
+            searchCell?.alpha = 1 - (localY - 30)/10
         } else {
             searchCell?.alpha = 1
         }
         
-        if y >= 25 {
+        if localY >= 73 {
             header?.whiteView.alpha = 1
         } else {
             header?.whiteView.alpha = 0
         }
         
-//        if y >= 35 && y < 37 {
-//            header?.shadowView.alpha += y/150
-//        } else if y >= 37 {
-//            header?.shadowView.alpha = 1
-//        } else {
-//            header?.shadowView.alpha = 1
-//        }
+        if localY >= 96 && localY < 103 {
+            header?.shadowView.alpha += localY/400
+        } else if localY >= 103 {
+            header?.shadowView.alpha = 1
+        } else {
+            header?.shadowView.alpha = 0
+        }
     }
     
     private func scrollTo(_ y: CGFloat) {
         
-//        if y < 5  {
-//            DispatchQueue.main.async {
-//                self.scrollToRow(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
-//            }
-//        }
-//
-//        if y >= 5 && y <= 30 {
-//            DispatchQueue.main.async {
-//                self.scrollToRow(at: IndexPath(item: 0, section: 1), at: .top, animated: true)
-//            }
-//        }
+        let localY = y + localScrollTop!
+        
+        if localY < 45  {
+            DispatchQueue.main.async {
+                self.scrollToRow(at: IndexPath.init(row: 0, section: 0), at: .middle, animated: true)
+            }
+        }
+
+        if localY >= 45 && localY <= 91 {
+            DispatchQueue.main.async {
+                self.scrollToRow(at: IndexPath(item: 0, section: 1), at: .top, animated: true)
+            }
+        }
         
     }
     
