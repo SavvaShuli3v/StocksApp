@@ -144,7 +144,6 @@ extension ListStocksTableView: UITableViewDelegate, UITableViewDataSource {
     // MARK: - Animate Methods
     
     private func setAlphaSearchCell(_ y: CGFloat) {
-        print(y) // -48 - 150 = 198
         
         if localScrollTop == nil {
             if y >= 0 {
@@ -155,7 +154,6 @@ extension ListStocksTableView: UITableViewDelegate, UITableViewDataSource {
         }
         
         let localY = y + localScrollTop!
-        print(localY)
         
         weak var searchCell = self.cellForRow(at: IndexPath(item: 0, section: 0))
         weak var header = self.headerView(forSection: 1) as? ListStocksHeader
