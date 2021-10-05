@@ -27,6 +27,7 @@
 		4DAEE81127078C29008D1D77 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAEE81027078C29008D1D77 /* ListViewController.swift */; };
 		4DAEE81327078F22008D1D77 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 4DAEE81227078F22008D1D77 /* .gitignore */; };
 		4DAEE8192707903A008D1D77 /* ListStocksTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAEE81827079039008D1D77 /* ListStocksTableView.swift */; };
+		4DBEB20E270CCB63005A7E6D /* PreconditionFailedCalls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBEB20D270CCB63005A7E6D /* PreconditionFailedCalls.swift */; };
 		4DD87A79270A451A00EC73D3 /* CustomSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD87A78270A451A00EC73D3 /* CustomSearchBar.swift */; };
 		4DD87A7B270A5D8F00EC73D3 /* UISearchBar + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD87A7A270A5D8F00EC73D3 /* UISearchBar + Extension.swift */; };
 /* End PBXBuildFile section */
@@ -54,6 +55,7 @@
 		4DAEE81027078C29008D1D77 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		4DAEE81227078F22008D1D77 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		4DAEE81827079039008D1D77 /* ListStocksTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListStocksTableView.swift; sourceTree = "<group>"; };
+		4DBEB20D270CCB63005A7E6D /* PreconditionFailedCalls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreconditionFailedCalls.swift; sourceTree = "<group>"; };
 		4DD87A78270A451A00EC73D3 /* CustomSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSearchBar.swift; sourceTree = "<group>"; };
 		4DD87A7A270A5D8F00EC73D3 /* UISearchBar + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISearchBar + Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -220,6 +222,7 @@
 				4D346665270793AD003B4A99 /* Styles */,
 				4D346664270793A2003B4A99 /* Localization */,
 				4DAEE80D27078BB1008D1D77 /* Extensions */,
+				4DBEB20F270CCD95005A7E6D /* PreconditionFailedCalls */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -273,6 +276,14 @@
 				4D34667E2707D2E3003B4A99 /* AnimatedStockButton.swift */,
 			);
 			path = ForListModule;
+			sourceTree = "<group>";
+		};
+		4DBEB20F270CCD95005A7E6D /* PreconditionFailedCalls */ = {
+			isa = PBXGroup;
+			children = (
+				4DBEB20D270CCB63005A7E6D /* PreconditionFailedCalls.swift */,
+			);
+			path = PreconditionFailedCalls;
 			sourceTree = "<group>";
 		};
 		4DD87A75270A3DC200EC73D3 /* ForSearchModule */ = {
@@ -356,6 +367,7 @@
 			files = (
 				4D34666F27079858003B4A99 /* Styles.swift in Sources */,
 				4D5B65E8270B247A001F7F15 /* SimpleAnimatedButton.swift in Sources */,
+				4DBEB20E270CCB63005A7E6D /* PreconditionFailedCalls.swift in Sources */,
 				4DD87A7B270A5D8F00EC73D3 /* UISearchBar + Extension.swift in Sources */,
 				4D3466772707A4EA003B4A99 /* ListModel.swift in Sources */,
 				4D3466612707923B003B4A99 /* ListPresenter.swift in Sources */,

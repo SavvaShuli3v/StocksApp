@@ -78,7 +78,7 @@ extension ListStocksTableView: UITableViewDelegate, UITableViewDataSource {
                 return favouriteStocks.count
             }
         default:
-            return 0
+            precondition(false, PreconditionFailedCalls.defaultCase)
         }
     }
     
@@ -88,7 +88,7 @@ extension ListStocksTableView: UITableViewDelegate, UITableViewDataSource {
             let cell = dequeueReusableCell(withIdentifier: CellID.searchCell, for: indexPath) as! ListSearchCell
             cell.delegate = self
             return cell
-        default:
+        case 1:
             let cell = dequeueReusableCell(withIdentifier: CellID.mainCell, for: indexPath) as! ListStocksCell
             switch isStocks {
             case true:
@@ -101,8 +101,8 @@ extension ListStocksTableView: UITableViewDelegate, UITableViewDataSource {
                 cell.setColor(to: indexPath as NSIndexPath)
                 return cell
             }
-            
-            
+        default:
+            precondition(false, PreconditionFailedCalls.defaultCase)
         }
     }
     
@@ -113,7 +113,7 @@ extension ListStocksTableView: UITableViewDelegate, UITableViewDataSource {
         case 1:
             return 84
         default:
-            return 0
+            precondition(false, PreconditionFailedCalls.defaultCase)
         }
     }
     
@@ -128,16 +128,19 @@ extension ListStocksTableView: UITableViewDelegate, UITableViewDataSource {
             header.delegate = self
             return header
         default:
-            return nil
+            precondition(false, PreconditionFailedCalls.defaultCase)
         }
         
     }    
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 1 {
-            return 60
-        } else {
+        switch section {
+        case 0:
             return 0
+        case 1:
+            return 60
+        default:
+            precondition(false, PreconditionFailedCalls.defaultCase)
         }
     }
     
