@@ -51,7 +51,7 @@ final class ListSearchCell: UITableViewCell {
         self.searchButton.contentHorizontalAlignment = .left
         self.searchButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 36, bottom: 0, right: 0)
         
-        self.searchButton.setImage(UIImage(named: Styles.ImageNames.ellipse), for: .normal)
+        self.searchButton.setImage(UIImage(named: ImageNames.ellipse), for: .normal)
         self.searchButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
         
         self.searchButton.setAction {

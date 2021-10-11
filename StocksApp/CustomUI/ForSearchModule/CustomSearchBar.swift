@@ -10,7 +10,7 @@ import UIKit
 final class CustomSearchBar: UIView {
     
     let backButton = SimpleAnimatedButton()
-    var search = UISearchBar()
+    let search = UISearchBar()
     
     // MARK: - Init
     
@@ -46,7 +46,7 @@ final class CustomSearchBar: UIView {
         self.backButton.leading(0, to: self.leadingAnchor)
         self.backButton.width(40)
         self.backButton.backgroundColor = .white
-        self.backButton.setImage(UIImage(named: "Arrow"), for: .normal)
+        self.backButton.setImage(UIImage(named: ImageNames.arrow), for: .normal)
         self.backButton.imageEdgeInsets = UIEdgeInsets(top: 17, left: 18, bottom: 17, right: 5)
         
         self.backButton.setAction {
@@ -66,7 +66,7 @@ final class CustomSearchBar: UIView {
     }
     
     private func setupTextField() {
-        self.search.setImage(UIImage(named: "Cross"), for: .clear, state: .normal)
+        self.search.setImage(UIImage(named: ImageNames.cross), for: .clear, state: .normal)
         
         // Remove the icon, which is located in the left view
         self.search.setImage(UIImage(), for: .search, state: .normal)

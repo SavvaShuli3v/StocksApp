@@ -17,8 +17,4 @@ enum Styles {
         static let gray: UIColor = .rgba(186, 186, 186)
         static let yellow: UIColor = .rgba(255, 202, 28)
     }
-    
-    enum ImageNames {
-        static let ellipse = "Ellipse"
-    }
 }
