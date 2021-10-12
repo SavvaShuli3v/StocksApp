@@ -11,14 +11,14 @@ protocol ListTableViewProtocol: AnyObject {
     func didTapSearch()
     func didTapStocks()
     func didTapFavourite()
-    func didTapToCell(with stock: StockModel)
+    func didTapToCell(with ticker: String)
 }
 
 final class ListStocksTableView: UITableView {
     
     weak var answerDelegate: ListTableViewProtocol?
     
-    var stocks = [StockModel]()
+    var stocks = [Stock]()
     var favouriteStocks = [Stock]()
     
     var isStocks = true
@@ -236,10 +236,10 @@ extension ListStocksTableView: StocksHeaderProtocol {
 // MARK: - MainCell Binding
 
 extension ListStocksTableView: ListStocksCellProtocol {
-    
-    func tappedToCell(with stock: StockModel) {
-        self.answerDelegate?.didTapToCell(with: stock)
+    func tappedToCell(with ticker: String) {
+        self.answerDelegate?.didTapToCell(with: ticker)
     }
+    
 }
 
 // MARK: - HeaderID, CellID

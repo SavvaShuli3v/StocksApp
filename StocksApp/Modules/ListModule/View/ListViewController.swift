@@ -17,8 +17,7 @@ final class ListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.presenter.setStocks()
-        
+
         setupUI()
     }
     
@@ -50,11 +49,10 @@ final class ListViewController: UIViewController {
 // MARK: - Presenter Binding
 
 extension ListViewController: ListViewProtocol {
+    
     func succes() {
         print("succes")
-        //print(presenter.stocks)
-        
-        self.mainTableView.stocks = presenter.stocks
+        self.mainTableView.stocks = presenter.stocksForTableView
         self.mainTableView.reloadData()
     }
     
@@ -62,10 +60,12 @@ extension ListViewController: ListViewProtocol {
         print(error)
     }
     
-    func getStocks(stocks: [Stock], favouriteStocks: [Stock]) {
-        self.mainTableView.stocks = [StockModel]()
-        self.mainTableView.favouriteStocks = favouriteStocks
+    func updateStockImage(for position: Int, with image: UIImage?) {
+        print("udapte")
+        self.mainTableView.stocks = presenter.stocksForTableView
+        self.mainTableView.reloadRows(at: [IndexPath(item: position, section: 1)], with: .none)
     }
+
 }
 
 // MARK: - ListTableView Binding
@@ -85,8 +85,8 @@ extension ListViewController: ListTableViewProtocol {
         print("didTapFavourite")
     }
     
-    func didTapToCell(with stock: StockModel) {
-        print(stock.symbol)
+    func didTapToCell(with ticker: String) {
+        print(ticker)
     }
     
 }

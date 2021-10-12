@@ -7,22 +7,26 @@
 
 import UIKit
 
+// MARK: - ListViewProtocol
+
 protocol ListViewProtocol: AnyObject {
-    func getStocks(stocks: [Stock], favouriteStocks: [Stock])
-    
     func succes()
     func failure(error: Error)
+    func updateStockImage(for position: Int, with image: UIImage?)
 }
+
+// MARK: - ListViewPresenterProtocol
 
 protocol ListViewPresenterProtocol {
     init(view: ListViewProtocol, networkService: NetworkServiceProtocol)
-    func setStocks()
-    func getStock()
-    func getStockImage()
+    func getStock(from data: [String])
+    func getStockImage(for ticker: String, from urlString: String)
     
     var stocks: [StockModel] { get set }
-    var stockImages: [UIImage?] { get set }
+    var stocksForTableView: [Stock] { get set }
 }
+
+// MARK: - class ListPresenter
 
 final class ListPresenter: ListViewPresenterProtocol {
 
@@ -30,19 +34,62 @@ final class ListPresenter: ListViewPresenterProtocol {
     let networkService: NetworkServiceProtocol!
     
     var stocks: [StockModel]
-    var stockImages: [UIImage?]
+    var stocksForTableView: [Stock]
+    
+    // MARK: - Init
     
     required init(view: ListViewProtocol, networkService: NetworkServiceProtocol) {
         self.view = view
         self.networkService = networkService
         
         stocks = [StockModel]()
-        stockImages = [UIImage?]()
-        getStock()
+        stocksForTableView = [Stock]()
+        stocksForTableView = setupStocksForTableView(with: DataStocks.tickersArray)
+        
+        getStock(from: DataStocks.tickersArray)
     }
     
-    func getStock() {
-        for ticker in DataStocks.tickersArray {
+    // MARK: - Private Methods
+    
+    private func setupStocksForTableView(with tickers: [String]) -> [Stock] {
+        var stocks = [Stock]()
+        
+        for ticker in tickers {
+            stocks.append(Stock(logo: nil, ticker: ticker, companyName: nil, price: nil, changePrice: nil))
+        }
+        return stocks
+    }
+    
+    private func setupStocksArrayForTableView() {
+        for stock in stocks {
+            for i in 0..<stocksForTableView.count {
+                if stocksForTableView[i].ticker == stock.symbol {
+                    stocksForTableView[i].companyName = stock.companyName
+                    stocksForTableView[i].price = stock.price
+                    stocksForTableView[i].changePrice = stock.changes
+                    
+                    getStockImage(for: stock.symbol, from: stock.image)
+                }
+            }
+        }
+    }
+    
+    private func updateStocksForTableView(for ticker: String, with image: UIImage?) {
+        for i in 0..<stocksForTableView.count {
+            if stocksForTableView[i].ticker == ticker {
+                stocksForTableView[i].logo = image
+                
+                DispatchQueue.main.async {
+                    self.view?.updateStockImage(for: i, with: image)
+                }
+            }
+        }
+    }
+    
+    // MARK: - Binding
+    
+    func getStock(from data: [String]) {
+        for ticker in data {
             self.networkService.getStock(for: ticker) { [weak self] result in
                 guard let self = self else { return }
                 
@@ -53,7 +100,8 @@ final class ListPresenter: ListViewPresenterProtocol {
                         self.stocks.append(stock!)
                         
                         if self.stocks.count == DataStocks.tickersArray.count {
-                        self.view?.succes()
+                            self.setupStocksArrayForTableView()
+                            self.view?.succes()
                         }
                     case .failure(let error):
                         self.view?.failure(error: error)
@@ -63,36 +111,21 @@ final class ListPresenter: ListViewPresenterProtocol {
         }
     }
     
-    func getStockImage() {
-        self.networkService.getStockImage(for: "", from: "") { [weak self] result in
+    func getStockImage(for ticker: String, from urlString: String) {
+        self.networkService.getStockImage(for: ticker, from: urlString) { [weak self] result in
             guard let self = self else { return }
             
             switch result {
             case .success(let image):
-                self.stockImages.append(image ?? nil)
+                self.updateStocksForTableView(for: ticker, with: image)
             case .failure(let error):
+                print("Get image failure:")
                 print(error)
             }
-            
-            
         }
     }
 
-    
-    func setStocks() {
-        self.view?.getStocks(stocks: hardStocks, favouriteStocks: favouriteStocks)
-    }
 }
 
 
 
-
-
-
-private var aaplLogo = UIImage(named: "TestAAPL")
-private var teslaLogo = UIImage(named: "TestTSLA")
-private var yandexLogo = UIImage(named: "TestYNDX")
-
-private let hardStocks = [Stock(logo: yandexLogo, ticker: "YNDX", companyName: "Yandex LLDC Company", price: 120.2, changePrice: 3.221) ,Stock(logo: aaplLogo, ticker: "AAPL", companyName: "Apple company", price: 170.1, changePrice: 12), Stock(logo: teslaLogo, ticker: "TSLA", companyName: "Tesla", price: 2001.21, changePrice: -134), Stock(logo: aaplLogo, ticker: "AAPL", companyName: "Apple company", price: 170.1, changePrice: 12), Stock(logo: nil, ticker: "AAPL", companyName: "Apple company", price: 170.1, changePrice: 12), Stock(logo: aaplLogo, ticker: "AAPL", companyName: "Apple company", price: 170.1, changePrice: 12), Stock(logo: aaplLogo, ticker: "AAPL", companyName: "Apple company", price: 170.1, changePrice: 12), Stock(logo: aaplLogo, ticker: "AAPL", companyName: "Apple company", price: 170.1, changePrice: 12), Stock(logo: aaplLogo, ticker: "AAPL", companyName: "Apple company", price: 170.1, changePrice: 12), Stock(logo: aaplLogo, ticker: "AAPL", companyName: "Apple company", price: 170.1, changePrice: 12), Stock(logo: aaplLogo, ticker: "AAPL", companyName: "Apple company", price: 170.1, changePrice: 12), Stock(logo: aaplLogo, ticker: "AAPL", companyName: "Apple company", price: 170.1, changePrice: 12), Stock(logo: aaplLogo, ticker: "AAPL", companyName: "Apple company", price: 170.1, changePrice: 12), Stock(logo: aaplLogo, ticker: "AAPL", companyName: "Apple company", price: 170.1, changePrice: 12), Stock(logo: aaplLogo, ticker: "AAPL", companyName: "Apple company", price: 170.1, changePrice: 12), Stock(logo: aaplLogo, ticker: "AAPL", companyName: "Apple company", price: 170.1, changePrice: 12), Stock(logo: aaplLogo, ticker: "AAPL", companyName: "Apple company", price: 170.1, changePrice: 12), Stock(logo: aaplLogo, ticker: "AAPL", companyName: "Apple company", price: 170.1, changePrice: 12), Stock(logo: aaplLogo, ticker: "AAPL", companyName: "Apple company", price: 170.1, changePrice: 12), Stock(logo: aaplLogo, ticker: "AAPL", companyName: "Apple company", price: 170.1, changePrice: 12), Stock(logo: aaplLogo, ticker: "AAPL", companyName: "Apple company", price: 170.1, changePrice: 12), Stock(logo: aaplLogo, ticker: "AAPL", companyName: "Apple company", price: 170.1, changePrice: 12), Stock(logo: aaplLogo, ticker: "AAPL", companyName: "Apple company", price: 170.1, changePrice: 12), Stock(logo: aaplLogo, ticker: "AAPL", companyName: "Apple company", price: 170.1, changePrice: 12)]
-
-private let favouriteStocks = [Stock(logo: aaplLogo, ticker: "AAPL", companyName: "Apple company", price: 170.1, changePrice: 12), Stock(logo: teslaLogo, ticker: "TSLA", companyName: "Tesla", price: 2001.21, changePrice: -134), Stock(logo: yandexLogo, ticker: "YNDX", companyName: "Yandex LLDC Company", price: 120.1, changePrice: 3.21), Stock(logo: aaplLogo, ticker: "AAPL", companyName: "Apple company", price: 170.1, changePrice: 12), Stock(logo: aaplLogo, ticker: "AAPL", companyName: "Apple company", price: 170.1, changePrice: 12)]

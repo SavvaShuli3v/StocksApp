@@ -8,13 +8,13 @@
 import UIKit
 
 protocol ListStocksCellProtocol: AnyObject {
-    func tappedToCell(with stock: StockModel)
+    func tappedToCell(with ticker: String)
 }
 
 final class ListStocksCell: UITableViewCell {
     
     weak var delegate: ListStocksCellProtocol?
-    private var stock: StockModel?
+    private var stock: Stock?
     
     private lazy var stockButton = AnimatedStockButton()
     
@@ -42,16 +42,15 @@ final class ListStocksCell: UITableViewCell {
     
     // MARK: - Public Methods
     
-    func set(stock: StockModel) {
+    func set(stock: Stock) {
         self.stock = stock
         
-        self.ticker.text = stock.symbol
+        self.ticker.text = stock.ticker
         self.companyName.text = stock.companyName
 
-        self.price.text = "\(stock.price)"
-        
-        //changeLogo(stock.logo)
-        changePriceUpdate(stock.changes)
+        setCompanyPrice(stock.price)
+        changeLogo(stock.logo)
+        changePriceUpdate(stock.changePrice)
     }
     
     func setColor(to index: NSIndexPath) {
@@ -85,7 +84,7 @@ final class ListStocksCell: UITableViewCell {
         self.stockButton.layer.cornerRadius = 16
         
         self.stockButton.setAction {
-            self.delegate?.tappedToCell(with: self.stock!)
+            self.delegate?.tappedToCell(with: self.stock!.ticker)
         }
     }
 
@@ -107,7 +106,7 @@ final class ListStocksCell: UITableViewCell {
         self.companyLogo.width(52)
         self.companyLogo.height(52)
         
-        self.companyLogo.backgroundColor = Styles.Colors.gray
+        self.companyLogo.backgroundColor = .clear
         self.companyLogo.layer.cornerRadius = 12
         self.companyLogo.clipsToBounds = true
     }
@@ -170,7 +169,14 @@ final class ListStocksCell: UITableViewCell {
         self.companyLogo.image = image
     }
     
-    private func changePriceUpdate(_ change: Double) {
+    private func setCompanyPrice(_ price: Double?) {
+        guard let price = price else { return }
+        self.price.text = "\(price)"
+    }
+    
+    private func changePriceUpdate(_ change: Double?) {
+        guard let change = change else { return }
+        
         if change >= 0 {
             let formatChange = (String(format: "%.2f", change))
             self.changePrice.text = "+$\(formatChange)"
