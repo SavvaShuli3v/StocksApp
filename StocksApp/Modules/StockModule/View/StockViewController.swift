@@ -9,6 +9,8 @@ import UIKit
 
 final class StockViewController: UIViewController {
     
+    var presenter: StockViewPresenterProtocol!
+    
     private lazy var stockNavBar = UIStockBar()
     private let collectionView: UICollectionView
     
@@ -29,6 +31,7 @@ final class StockViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenter.setStock()
         
         setupUI()
         textBack()
@@ -38,10 +41,20 @@ final class StockViewController: UIViewController {
     
     private func textBack() {
         self.stockNavBar.backButton.setAction {
-            self.dismiss(animated: false, completion: nil)
+            self.presenter.tapToBack()
         }
     }
 
+}
+
+// MARK: - Presenter Binding
+
+extension StockViewController: StockViewProtocol {
+    
+    func setStock(_ stock: StockModel?) {
+        self.stockNavBar.ticker.text = stock?.symbol
+        self.stockNavBar.companyName.text = stock?.companyName
+    }
 }
 
 // MARK: - UICollectionViewDataSource
@@ -53,6 +66,7 @@ extension StockViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCell", for: indexPath) as! PriceStockCell
         cell.setForColor(ind: indexPath.row)
         return cell
@@ -110,3 +124,5 @@ private extension StockViewController {
         self.collectionView.showsHorizontalScrollIndicator = false
     }
 }
+
+

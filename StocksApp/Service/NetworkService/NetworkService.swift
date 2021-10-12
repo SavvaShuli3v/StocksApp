@@ -33,6 +33,7 @@ final class NetworkService: NetworkServiceProtocol {
                     let jsonObject = try JSONSerialization.jsonObject(with: data)
                     guard
                         let json = jsonObject as? [[String: Any]],
+                        json.count > 0,
                         let symbol = json[0]["symbol"] as? String,
                         let price = json[0]["price"] as? Double,
                         let mktCap = json[0]["mktCap"] as? Int,

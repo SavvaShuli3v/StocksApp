@@ -8,5 +8,6 @@
 import Foundation
 
 final class DataStocks {
+    //static let tickersArray = ["AAPL", "GOOGL", "AMZN", "YNDX", "FB", "NFLX", "BABA", "UBER", "NKE", "RACE", "BAC"]
     static let tickersArray = ["AAPL", "GOOGL", "AMZN"]
 }

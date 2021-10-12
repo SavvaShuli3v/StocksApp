@@ -24,8 +24,6 @@ final class ListViewController: UIViewController {
     // MARK: - Private Methods
     
     private func setupUI() {
-        self.view.backgroundColor = .red
-        
         setupMainTableView()
     }
     
@@ -34,14 +32,6 @@ final class ListViewController: UIViewController {
         self.mainTableView.translatesAutoresizingMaskIntoConstraints = false
         self.mainTableView.allConstraints(to: self.view)
         self.mainTableView.answerDelegate = self
-    }
-    
-    // MARK: - Presents Views
-    
-    private func presentSearchVC() {
-        let searchVC = ModuleBuilder.createSearch()
-        searchVC.modalPresentationStyle = .fullScreen
-        self.present(searchVC, animated: false, completion: nil)
     }
 
 }
@@ -74,7 +64,6 @@ extension ListViewController: ListTableViewProtocol {
     
     func didTapSearch() {
         print("didTapSearch")
-        presentSearchVC()
     }
     
     func didTapStocks() {
@@ -86,7 +75,7 @@ extension ListViewController: ListTableViewProtocol {
     }
     
     func didTapToCell(with ticker: String) {
-        print(ticker)
+        presenter.tappedToStock(with: ticker)
     }
     
 }

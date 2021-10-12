@@ -18,9 +18,10 @@ protocol ListViewProtocol: AnyObject {
 // MARK: - ListViewPresenterProtocol
 
 protocol ListViewPresenterProtocol {
-    init(view: ListViewProtocol, networkService: NetworkServiceProtocol)
+    init(view: ListViewProtocol, networkService: NetworkServiceProtocol, router: RouterProtocol)
     func getStock(from data: [String])
     func getStockImage(for ticker: String, from urlString: String)
+    func tappedToStock(with ticker: String)
     
     var stocks: [StockModel] { get set }
     var stocksForTableView: [Stock] { get set }
@@ -29,8 +30,8 @@ protocol ListViewPresenterProtocol {
 // MARK: - class ListPresenter
 
 final class ListPresenter: ListViewPresenterProtocol {
-
     weak var view: ListViewProtocol?
+    var router: RouterProtocol?
     let networkService: NetworkServiceProtocol!
     
     var stocks: [StockModel]
@@ -38,9 +39,10 @@ final class ListPresenter: ListViewPresenterProtocol {
     
     // MARK: - Init
     
-    required init(view: ListViewProtocol, networkService: NetworkServiceProtocol) {
+    required init(view: ListViewProtocol, networkService: NetworkServiceProtocol, router: RouterProtocol) {
         self.view = view
         self.networkService = networkService
+        self.router = router
         
         stocks = [StockModel]()
         stocksForTableView = [Stock]()
@@ -119,8 +121,17 @@ final class ListPresenter: ListViewPresenterProtocol {
             case .success(let image):
                 self.updateStocksForTableView(for: ticker, with: image)
             case .failure(let error):
-                print("Get image failure:")
-                print(error)
+                print("Get image failure - \(error)")
+            }
+        }
+    }
+    
+    func tappedToStock(with ticker: String) {
+        guard let view = view as? UIViewController else { return }
+        
+        for i in 0..<stocks.count {
+            if stocks[i].symbol == ticker {
+                router?.showStockModule(from: view, stock: stocks[i])
             }
         }
     }

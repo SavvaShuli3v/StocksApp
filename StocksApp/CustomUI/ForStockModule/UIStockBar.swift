@@ -12,8 +12,8 @@ final class UIStockBar: UIView {
     let backButton = SimpleAnimatedButton()
     private lazy var favButton = SimpleAnimatedButton()
     
-    private lazy var ticker = UILabel()
-    private lazy var companyName = UILabel()
+    let ticker = UILabel()
+    let companyName = UILabel()
     
     // MARK: - Init
     
@@ -71,7 +71,6 @@ final class UIStockBar: UIView {
         
         self.ticker.textColor = Styles.Colors.black
         self.ticker.font = UIFont.systemFont(ofSize: 18, weight: .bold)
-        self.ticker.text = "AAPL"
     }
     
     private func setupCompanyName() {
@@ -83,7 +82,6 @@ final class UIStockBar: UIView {
         
         self.companyName.textColor = Styles.Colors.black
         self.companyName.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
-        self.companyName.text = "Apple inc."
     }
     
 }
