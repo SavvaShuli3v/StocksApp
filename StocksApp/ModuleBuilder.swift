@@ -16,7 +16,8 @@ class ModuleBuilder: Builder {
 
     static func createList() -> UIViewController {
         let view = ListViewController()
-        let presenter = ListPresenter(view: view)
+        let networkService = NetworkService()
+        let presenter = ListPresenter(view: view, networkService: networkService)
         view.presenter = presenter
         return view
     }

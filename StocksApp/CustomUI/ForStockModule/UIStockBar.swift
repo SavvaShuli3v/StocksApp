@@ -9,7 +9,7 @@ import UIKit
 
 final class UIStockBar: UIView {
     
-    private lazy var backButton = SimpleAnimatedButton()
+    let backButton = SimpleAnimatedButton()
     private lazy var favButton = SimpleAnimatedButton()
     
     private lazy var ticker = UILabel()

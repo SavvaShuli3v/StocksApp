@@ -31,10 +31,16 @@ final class StockViewController: UIViewController {
         super.viewDidLoad()
         
         setupUI()
+        textBack()
     }
     
     // MARK: - Private Methods
     
+    private func textBack() {
+        self.stockNavBar.backButton.setAction {
+            self.dismiss(animated: false, completion: nil)
+        }
+    }
 
 }
 
@@ -47,8 +53,8 @@ extension StockViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCell", for: indexPath)
-        cell.backgroundColor = .blue
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCell", for: indexPath) as! PriceStockCell
+        cell.setForColor(ind: indexPath.row)
         return cell
     }
     
@@ -65,7 +71,7 @@ extension StockViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 10
+        return 0
     }
 }
 

@@ -16,4 +16,17 @@ final class PriceStockCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    func setForColor(ind: Int) {
+    switch ind {
+    case 0:
+        self.backgroundColor = .blue
+    case 1:
+        self.backgroundColor = .green
+    case 2:
+        self.backgroundColor = .gray
+    default:
+        print("aaaaaaa")
+    }
+    }
 }

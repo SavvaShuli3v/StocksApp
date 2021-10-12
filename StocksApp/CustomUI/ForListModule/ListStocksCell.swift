@@ -8,13 +8,13 @@
 import UIKit
 
 protocol ListStocksCellProtocol: AnyObject {
-    func tappedToCell(with stock: Stock)
+    func tappedToCell(with stock: StockModel)
 }
 
 final class ListStocksCell: UITableViewCell {
     
     weak var delegate: ListStocksCellProtocol?
-    private var stock: Stock?
+    private var stock: StockModel?
     
     private lazy var stockButton = AnimatedStockButton()
     
@@ -42,16 +42,16 @@ final class ListStocksCell: UITableViewCell {
     
     // MARK: - Public Methods
     
-    func set(stock: Stock) {
+    func set(stock: StockModel) {
         self.stock = stock
         
-        self.ticker.text = stock.ticker
+        self.ticker.text = stock.symbol
         self.companyName.text = stock.companyName
 
         self.price.text = "\(stock.price)"
         
-        changeLogo(stock.logo)
-        changePriceUpdate(stock.changePrice)
+        //changeLogo(stock.logo)
+        changePriceUpdate(stock.changes)
     }
     
     func setColor(to index: NSIndexPath) {
@@ -172,10 +172,12 @@ final class ListStocksCell: UITableViewCell {
     
     private func changePriceUpdate(_ change: Double) {
         if change >= 0 {
-            self.changePrice.text = "+$\(change)"
+            let formatChange = (String(format: "%.2f", change))
+            self.changePrice.text = "+$\(formatChange)"
             self.changePrice.textColor = Styles.Colors.green
         } else {
-            self.changePrice.text = " -$\(-change)"
+            let formatChange = (String(format: "%.2f", -change))
+            self.changePrice.text = " -$\(formatChange)"
             self.changePrice.textColor = Styles.Colors.red
         }
     }

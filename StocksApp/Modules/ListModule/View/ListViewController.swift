@@ -50,8 +50,20 @@ final class ListViewController: UIViewController {
 // MARK: - Presenter Binding
 
 extension ListViewController: ListViewProtocol {
+    func succes() {
+        print("succes")
+        //print(presenter.stocks)
+        
+        self.mainTableView.stocks = presenter.stocks
+        self.mainTableView.reloadData()
+    }
+    
+    func failure(error: Error) {
+        print(error)
+    }
+    
     func getStocks(stocks: [Stock], favouriteStocks: [Stock]) {
-        self.mainTableView.stocks = stocks
+        self.mainTableView.stocks = [StockModel]()
         self.mainTableView.favouriteStocks = favouriteStocks
     }
 }
@@ -73,9 +85,8 @@ extension ListViewController: ListTableViewProtocol {
         print("didTapFavourite")
     }
     
-    func didTapToCell(with stock: Stock) {
-        print(stock)
+    func didTapToCell(with stock: StockModel) {
+        print(stock.symbol)
     }
-    
     
 }

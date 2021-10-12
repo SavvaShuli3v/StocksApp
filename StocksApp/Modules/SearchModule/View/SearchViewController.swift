@@ -36,7 +36,10 @@ final class SearchViewController: UIViewController {
         self.searchBar.height(48)
         
         self.searchBar.backButton.setAction {
-            self.dismiss(animated: false, completion: nil)
+            //self.dismiss(animated: false, completion: nil)
+            let stockVC = StockViewController()
+            stockVC.modalPresentationStyle = .fullScreen
+            self.present(stockVC, animated: false, completion: nil)
         }
     }
 

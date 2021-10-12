@@ -11,14 +11,14 @@ protocol ListTableViewProtocol: AnyObject {
     func didTapSearch()
     func didTapStocks()
     func didTapFavourite()
-    func didTapToCell(with stock: Stock)
+    func didTapToCell(with stock: StockModel)
 }
 
 final class ListStocksTableView: UITableView {
     
     weak var answerDelegate: ListTableViewProtocol?
     
-    var stocks = [Stock]()
+    var stocks = [StockModel]()
     var favouriteStocks = [Stock]()
     
     var isStocks = true
@@ -97,7 +97,7 @@ extension ListStocksTableView: UITableViewDelegate, UITableViewDataSource {
                 cell.delegate = self
                 return cell
             case false:
-                cell.set(stock: favouriteStocks[indexPath.row])
+                //cell.set(stock: favouriteStocks[indexPath.row])
                 cell.setColor(to: indexPath as NSIndexPath)
                 return cell
             }
@@ -237,7 +237,7 @@ extension ListStocksTableView: StocksHeaderProtocol {
 
 extension ListStocksTableView: ListStocksCellProtocol {
     
-    func tappedToCell(with stock: Stock) {
+    func tappedToCell(with stock: StockModel) {
         self.answerDelegate?.didTapToCell(with: stock)
     }
 }
