@@ -11,6 +11,7 @@ struct Stock {
     var logo: UIImage?
     var ticker: String
     var companyName: String?
-    var price: Double?
-    var changePrice: Double?
+    var price: String?
+    var changePrice: String?
+    var changeUp: Bool?
 }

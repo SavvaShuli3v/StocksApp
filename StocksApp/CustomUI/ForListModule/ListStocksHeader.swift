@@ -118,8 +118,8 @@ final class ListStocksHeader: UITableViewHeaderFooterView {
         self.stocksButton.setTitleColor(Styles.Colors.black, for: .normal)
         self.stocksButton.titleLabel?.font = UIFont.systemFont(ofSize: 28, weight: .bold)
         
-        self.stocksButton.setAction {
-            self.delegate?.tapStoksButton()
+        self.stocksButton.setAction { [weak self] in
+            self?.delegate?.tapStoksButton()
         }
     }
     
@@ -138,8 +138,8 @@ final class ListStocksHeader: UITableViewHeaderFooterView {
         self.favouriteButton.setTitleColor(Styles.Colors.gray, for: .normal)
         self.favouriteButton.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         
-        self.favouriteButton.setAction {
-            self.delegate?.tapFavoriteButton()
+        self.favouriteButton.setAction { [weak self] in
+            self?.delegate?.tapFavoriteButton()
         }
     }
     

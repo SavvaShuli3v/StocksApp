@@ -9,7 +9,8 @@ import UIKit
 
 protocol AssemblyBuilderProtocol {
     func createList(router: RouterProtocol) -> UIViewController
-    func createStock(stock: StockModel?, router: RouterProtocol) -> UIViewController
+    func createSearch(router: RouterProtocol) -> UIViewController
+    func createStock(stock: PreparedStock?, router: RouterProtocol) -> UIViewController
 }
 
 class AssemblyModuleBuilder: AssemblyBuilderProtocol {
@@ -22,7 +23,14 @@ class AssemblyModuleBuilder: AssemblyBuilderProtocol {
         return view
     }
     
-    func createStock(stock: StockModel?, router: RouterProtocol) -> UIViewController {
+    func createSearch(router: RouterProtocol) -> UIViewController {
+        let view = SearchViewController()
+        let presenter = SearchPresenter(view: view, router: router)
+        view.presenter = presenter
+        return view
+    }
+    
+    func createStock(stock: PreparedStock?, router: RouterProtocol) -> UIViewController {
         let view = StockViewController()
         let presenter = StockPresenter(view: view, router: router, stock: stock)
         view.presenter = presenter

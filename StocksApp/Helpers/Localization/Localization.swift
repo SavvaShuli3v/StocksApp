@@ -12,4 +12,16 @@ enum Localization {
     static let FindCompanyOrTicker = "Find company or ticker"
     static let stocks = "Stocks"
     static let favourite = "Favourite"
+    static let summary = "Summary"
+    
+    static let country = "Country"
+    static let branch = "Branch"
+    static let industry = "Industry"
+    static let dividends = "Dividends"
+    
+    static let yes = "Yes"
+    static let no = "No"
+    
+    static let popularRequests = "Popular requests"
+    static let youAreSearchedForThis = "You’ve searched for this"
 }

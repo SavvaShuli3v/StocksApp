@@ -22,20 +22,24 @@ protocol ListViewPresenterProtocol {
     func getStock(from data: [String])
     func getStockImage(for ticker: String, from urlString: String)
     func tappedToStock(with ticker: String)
+    func tappedToSearch()
     
-    var stocks: [StockModel] { get set }
+    var stocks: [NetworkStock] { get set }
     var stocksForTableView: [Stock] { get set }
+    var preparedStocks: [PreparedStock] { get set }
 }
 
 // MARK: - class ListPresenter
 
 final class ListPresenter: ListViewPresenterProtocol {
+    
     weak var view: ListViewProtocol?
     var router: RouterProtocol?
     let networkService: NetworkServiceProtocol!
     
-    var stocks: [StockModel]
+    var stocks: [NetworkStock]
     var stocksForTableView: [Stock]
+    var preparedStocks: [PreparedStock]
     
     // MARK: - Init
     
@@ -44,8 +48,9 @@ final class ListPresenter: ListViewPresenterProtocol {
         self.networkService = networkService
         self.router = router
         
-        stocks = [StockModel]()
+        stocks = [NetworkStock]()
         stocksForTableView = [Stock]()
+        preparedStocks = [PreparedStock]()
         stocksForTableView = setupStocksForTableView(with: DataStocks.tickersArray)
         
         getStock(from: DataStocks.tickersArray)
@@ -57,9 +62,37 @@ final class ListPresenter: ListViewPresenterProtocol {
         var stocks = [Stock]()
         
         for ticker in tickers {
-            stocks.append(Stock(logo: nil, ticker: ticker, companyName: nil, price: nil, changePrice: nil))
+            stocks.append(Stock(ticker: ticker))
         }
         return stocks
+    }
+    
+    private func setPreparedStock(from stock: NetworkStock) {
+        preparedStocks.append(PreparedStock(symbol: stock.symbol,
+                                            price: stock.price,
+                                            mktCap: stock.mktCap,
+                                            lastDiv: stock.lastDiv,
+                                            range: stock.range,
+                                            changes: stock.changes,
+                                            companyName: stock.companyName,
+                                            currency: stock.currency,
+                                            exchange: stock.exchange,
+                                            exchangeShortName: stock.exchangeShortName,
+                                            industry: stock.industry,
+                                            website: stock.website,
+                                            description: stock.description,
+                                            sector: stock.sector,
+                                            country: stock.currency,
+                                            address: stock.address,
+                                            city: stock.city,
+                                            state: stock.state,
+                                            image: stock.image,
+                                            ipoDate: stock.ipoDate,
+                                            isActivelyTrading: stock.isActivelyTrading,
+                                            preparedPrice: setStockPrice(with: stock.price),
+                                            preparedChangePrice: setChangePrice(with: stock.changes, with: stock.price),
+                                            isUp: isChangeUp(stock.changes),
+                                            stockLogo: nil))
     }
     
     private func setupStocksArrayForTableView() {
@@ -67,10 +100,12 @@ final class ListPresenter: ListViewPresenterProtocol {
             for i in 0..<stocksForTableView.count {
                 if stocksForTableView[i].ticker == stock.symbol {
                     stocksForTableView[i].companyName = stock.companyName
-                    stocksForTableView[i].price = stock.price
-                    stocksForTableView[i].changePrice = stock.changes
+                    stocksForTableView[i].price = setStockPrice(with: stock.price)
+                    stocksForTableView[i].changePrice = setChangePrice(with: stock.changes, with: stock.price)
+                    stocksForTableView[i].changeUp = isChangeUp(stock.changes)
                     
                     getStockImage(for: stock.symbol, from: stock.image)
+                    setPreparedStock(from: stock)
                 }
             }
         }
@@ -127,16 +162,81 @@ final class ListPresenter: ListViewPresenterProtocol {
     }
     
     func tappedToStock(with ticker: String) {
-        guard let view = view as? UIViewController else { return }
-        
-        for i in 0..<stocks.count {
-            if stocks[i].symbol == ticker {
-                router?.showStockModule(from: view, stock: stocks[i])
+        for stock in preparedStocks {
+            if stock.symbol == ticker {
+                router?.showStockModule(stock: stock)
             }
         }
+    }
+    
+    func tappedToSearch() {
+        router?.showSearchModule()
     }
 
 }
 
+// MARK: - setDataForStock
 
+private extension ListViewPresenterProtocol {
+    
+    func setStockPrice(with price: Double?) -> String? {
+        guard let price = price else { return nil }
+        
+        let roundedPrice = price.rounded(digits: 2)
+        let formattedPrice = roundedPrice.formattedWithSeparator
+        let outputPrice = "$" + formattedPrice
+        return outputPrice.changedCommaToPoint()
+    }
+    
+    func setChangePrice(with change: Double?, with price: Double?) -> String? {
+        guard
+            let change = change,
+            let price = price
+        else { return nil }
+
+        var str = String()
+        
+        switch change {
+        case 0...:
+            let formatChange = (String(format: "%.2f", change))
+            str = "+$\(formatChange)"
+        case ..<0:
+            let formatChange = (String(format: "%.2f", -change))
+            str = " -$\(formatChange)"
+        default:
+            precondition(false, PreconditionFailedCalls.defaultCase)
+        }
+        
+        func getChange() -> Double {
+            let oldPrice = price - change
+            let changePercent = change / oldPrice
+            return changePercent * 100
+        }
+        
+        let percent = getChange()
+        
+        if percent >= 0 {
+            let formatPercent = (String(format: "%.2f", percent))
+            str += " (\(formatPercent.changedPointToComma())%)"
+        } else {
+            let formatPercent = (String(format: "%.2f", -percent))
+            str += " (\(formatPercent.changedPointToComma())%)"
+        }
+        
+        return str
+    }
+    
+    func isChangeUp(_ change: Double?) -> Bool? {
+        guard let change = change else { return nil }
+        
+        switch change {
+        case ..<0:
+            return false
+        case 0...:
+            return true
+        default:
+            precondition(false, PreconditionFailedCalls.defaultCase)
+        }
+    }
+}
 

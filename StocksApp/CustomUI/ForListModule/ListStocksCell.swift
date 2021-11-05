@@ -19,11 +19,9 @@ final class ListStocksCell: UITableViewCell {
     private lazy var stockButton = AnimatedStockButton()
     
     private lazy var detailView = UIView()
-    
     private lazy var companyLogo = UIImageView()
     private lazy var ticker = UILabel()
     private lazy var companyName = UILabel()
-    
     private lazy var price = UILabel()
     private lazy var changePrice = UILabel()
     
@@ -47,10 +45,11 @@ final class ListStocksCell: UITableViewCell {
         
         self.ticker.text = stock.ticker
         self.companyName.text = stock.companyName
-
-        setCompanyPrice(stock.price)
-        changeLogo(stock.logo)
-        changePriceUpdate(stock.changePrice)
+        self.price.text = stock.price
+        self.changePrice.text = stock.changePrice
+        self.companyLogo.image = stock.logo
+        
+        setChangePriceColor(stock.changeUp)
     }
     
     func setColor(to index: NSIndexPath) {
@@ -60,35 +59,35 @@ final class ListStocksCell: UITableViewCell {
             self.detailView.backgroundColor = Styles.Colors.white
         }
     }
+}
+
+// MARK: - private extension ListStocksCell - SetupUI
+
+private extension ListStocksCell {
     
-    // MARK: - Private Methods
-    
-    private func setupCell() {
+    func setupCell() {
         setupDetailView()
-        
         setupCompanyLogo()
         setupTicker()
         setupCompanyName()
-        
         setupPrice()
         setupChangePrice()
-
         setupStockButton()
     }
     
-    private func setupStockButton() {
+    func setupStockButton() {
         self.contentView.addSubview(stockButton)
         self.stockButton.translatesAutoresizingMaskIntoConstraints = false
         self.stockButton.allConstraints(to: contentView, top: 8, bottom: -8, leading: 16, tralling: -16)
         self.stockButton.backgroundColor = .clear
         self.stockButton.layer.cornerRadius = 16
         
-        self.stockButton.setAction {
-            self.delegate?.tappedToCell(with: self.stock!.ticker)
+        self.stockButton.setAction { [weak self] in
+            self?.delegate?.tappedToCell(with: (self?.stock!.ticker)!)
         }
     }
 
-    private func setupDetailView() {
+    func setupDetailView() {
         self.addSubview(self.detailView)
         self.detailView.translatesAutoresizingMaskIntoConstraints = false
         self.detailView.allConstraints(to: self, top: 8, bottom: -8, leading: 16, tralling: -16)
@@ -97,7 +96,7 @@ final class ListStocksCell: UITableViewCell {
         self.detailView.layer.cornerRadius = 16
     }
 
-    private func setupCompanyLogo() {
+    func setupCompanyLogo() {
 
         self.detailView.addSubview(self.companyLogo)
         self.companyLogo.translatesAutoresizingMaskIntoConstraints = false
@@ -109,9 +108,10 @@ final class ListStocksCell: UITableViewCell {
         self.companyLogo.backgroundColor = .clear
         self.companyLogo.layer.cornerRadius = 12
         self.companyLogo.clipsToBounds = true
+        self.companyLogo.contentMode = .scaleAspectFit
     }
     
-    private func setupTicker() {
+    func setupTicker() {
         self.detailView.addSubview(self.ticker)
         self.ticker.translatesAutoresizingMaskIntoConstraints = false
         self.ticker.top(14, to: self.detailView.topAnchor)
@@ -124,7 +124,7 @@ final class ListStocksCell: UITableViewCell {
         self.ticker.font = UIFont.systemFont(ofSize: 18, weight: .bold)
     }
     
-    private func setupCompanyName() {
+    func setupCompanyName() {
         self.detailView.addSubview(self.companyName)
         self.companyName.translatesAutoresizingMaskIntoConstraints = false
         self.companyName.bottom(-14, to: self.detailView.bottomAnchor)
@@ -137,7 +137,7 @@ final class ListStocksCell: UITableViewCell {
         self.companyName.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
     }
     
-    private func setupPrice() {
+    func setupPrice() {
         self.detailView.addSubview(self.price)
         self.price.translatesAutoresizingMaskIntoConstraints = false
         self.price.top(14, to: self.detailView.topAnchor)
@@ -151,12 +151,11 @@ final class ListStocksCell: UITableViewCell {
         self.price.font = UIFont.systemFont(ofSize: 18, weight: .bold)
     }
     
-    private func setupChangePrice() {
+    func setupChangePrice() {
         self.detailView.addSubview(self.changePrice)
         self.changePrice.translatesAutoresizingMaskIntoConstraints = false
         self.changePrice.bottom(-14, to: self.detailView.bottomAnchor)
         self.changePrice.trailing(-17, to: self.detailView.trailingAnchor)
-        self.changePrice.width(80)
         self.changePrice.height(16)
         
         self.changePrice.backgroundColor = .clear
@@ -165,27 +164,14 @@ final class ListStocksCell: UITableViewCell {
         self.changePrice.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
     }
     
-    private func changeLogo(_ image: UIImage?) {
-        self.companyLogo.image = image
-    }
-    
-    private func setCompanyPrice(_ price: Double?) {
-        guard let price = price else { return }
-        self.price.text = "\(price)"
-    }
-    
-    private func changePriceUpdate(_ change: Double?) {
-        guard let change = change else { return }
-        
-        if change >= 0 {
-            let formatChange = (String(format: "%.2f", change))
-            self.changePrice.text = "+$\(formatChange)"
+    func setChangePriceColor(_ up: Bool?) {
+        guard let up = up else { return }
+ 
+        switch up {
+        case true:
             self.changePrice.textColor = Styles.Colors.green
-        } else {
-            let formatChange = (String(format: "%.2f", -change))
-            self.changePrice.text = " -$\(formatChange)"
+        case false:
             self.changePrice.textColor = Styles.Colors.red
         }
     }
-    
 }

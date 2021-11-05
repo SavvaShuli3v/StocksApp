@@ -24,6 +24,7 @@ final class ListViewController: UIViewController {
     // MARK: - Private Methods
     
     private func setupUI() {
+        navigationController?.navigationBar.isHidden = true
         setupMainTableView()
     }
     
@@ -41,7 +42,6 @@ final class ListViewController: UIViewController {
 extension ListViewController: ListViewProtocol {
     
     func succes() {
-        print("succes")
         self.mainTableView.stocks = presenter.stocksForTableView
         self.mainTableView.reloadData()
     }
@@ -51,7 +51,6 @@ extension ListViewController: ListViewProtocol {
     }
     
     func updateStockImage(for position: Int, with image: UIImage?) {
-        print("udapte")
         self.mainTableView.stocks = presenter.stocksForTableView
         self.mainTableView.reloadRows(at: [IndexPath(item: position, section: 1)], with: .none)
     }
@@ -63,7 +62,7 @@ extension ListViewController: ListViewProtocol {
 extension ListViewController: ListTableViewProtocol {
     
     func didTapSearch() {
-        print("didTapSearch")
+        presenter.tappedToSearch()
     }
     
     func didTapStocks() {

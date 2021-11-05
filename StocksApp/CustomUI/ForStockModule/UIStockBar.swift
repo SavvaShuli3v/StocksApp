@@ -15,6 +15,11 @@ final class UIStockBar: UIView {
     let ticker = UILabel()
     let companyName = UILabel()
     
+    private lazy var shadowView = UIView()
+    private lazy var closeShadowView = UIView()
+    
+    private lazy var collectionView = StockBarCollectionView()
+    
     // MARK: - Init
     
     override init(frame: CGRect) {
@@ -29,11 +34,43 @@ final class UIStockBar: UIView {
     // MARK: - Private Methods
     
     private func setupUI() {
+        self.backgroundColor = Styles.Colors.white
         setupBackButton()
         setupFavButton()
         
         setupTickerLabel()
         setupCompanyName()
+        
+        setupShadowView()
+        setupCloseShadowView()
+        
+        setupCollectionView()
+    }
+    
+    private func setupShadowView() {
+        self.addSubview(shadowView)
+        self.shadowView.translatesAutoresizingMaskIntoConstraints = false
+        self.shadowView.top(0, to: self.bottomAnchor)
+        self.shadowView.leading(0, to: self.leadingAnchor)
+        self.shadowView.trailing(0, to: self.trailingAnchor)
+        self.shadowView.height(1)
+        self.shadowView.backgroundColor = Styles.Colors.white
+        self.shadowView.alpha = 1
+        
+        self.shadowView.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.20).cgColor
+        self.shadowView.layer.shadowOpacity = 1
+        self.shadowView.layer.shadowOffset = CGSize(width: 0, height: 2)
+        self.shadowView.layer.shadowRadius = 2
+    }
+    
+    private func setupCloseShadowView() {
+        self.addSubview(closeShadowView)
+        self.closeShadowView.translatesAutoresizingMaskIntoConstraints = false
+        self.closeShadowView.bottom(0, to: self.bottomAnchor)
+        self.closeShadowView.leading(0, to: self.leadingAnchor)
+        self.closeShadowView.trailing(0, to: self.trailingAnchor)
+        self.closeShadowView.height(10)
+        self.closeShadowView.backgroundColor = Styles.Colors.white
     }
     
     private func setupBackButton() {
@@ -82,6 +119,15 @@ final class UIStockBar: UIView {
         
         self.companyName.textColor = Styles.Colors.black
         self.companyName.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
+    }
+    
+    private func setupCollectionView() {
+        self.addSubview(collectionView)
+        self.collectionView.translatesAutoresizingMaskIntoConstraints = false
+        self.collectionView.bottom()
+        self.collectionView.leading()
+        self.collectionView.trailing()
+        self.collectionView.height(36)
     }
     
 }

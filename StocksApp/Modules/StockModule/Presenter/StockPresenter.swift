@@ -10,15 +10,16 @@ import UIKit
 // MARK: - StockViewProtocol
 
 protocol StockViewProtocol: AnyObject {
-    func setStock(_ stock: StockModel?)
+    func setStock(_ stock: PreparedStock?)
 }
 
 // MARK: - StockViewPresenterProtocol
 
 protocol StockViewPresenterProtocol {
-    init(view: StockViewProtocol, router: RouterProtocol, stock: StockModel?)
+    init(view: StockViewProtocol, router: RouterProtocol, stock: PreparedStock?)
     func setStock()
     func tapToBack()
+    func setDivAnswer() -> String?
 }
 
 // MARK: - class StockPresenter
@@ -27,11 +28,11 @@ final class StockPresenter: StockViewPresenterProtocol {
     
     weak var view: StockViewProtocol?
     var router: RouterProtocol?
-    var stock: StockModel?
+    var stock: PreparedStock?
 
     // MARK: - Init
     
-    required init(view: StockViewProtocol, router: RouterProtocol, stock: StockModel?) {
+    required init(view: StockViewProtocol, router: RouterProtocol, stock: PreparedStock?) {
         self.view = view
         self.router = router
         self.stock = stock
@@ -42,8 +43,17 @@ final class StockPresenter: StockViewPresenterProtocol {
     }
     
     func tapToBack() {
-        guard let view = view as? UIViewController else { return }
-        router?.popToRoot(from: view)
+        router?.popToRoot()
+    }
+    
+    func setDivAnswer() -> String? {
+        guard let div = stock?.lastDiv else { return "_" }
+        
+        if div > 0 {
+            return Localization.yes
+        } else {
+            return Localization.no
+        }
     }
     
 }

@@ -10,35 +10,55 @@ import UIKit
 
 protocol RouterMain {
     var assemblyBuilder: AssemblyBuilderProtocol? { get set }
+    var navigationController: UINavigationController? { get set }
 }
 
 protocol RouterProtocol: RouterMain {
-    func initialViewController() -> UIViewController?
-    func showStockModule(from view: UIViewController, stock: StockModel?)
-    func popToRoot(from view: UIViewController)
+    func initialViewController()
+    func showSearchModule()
+    func showStockModule(stock: PreparedStock?)
+    func popToRoot()
+    func popToRootWithoutAnimated()
 }
 
 final class Router: RouterProtocol {
+    
     var assemblyBuilder: AssemblyBuilderProtocol?
+    var navigationController: UINavigationController?
     
-    init(assemblyBuilder: AssemblyBuilderProtocol) {
+    init(assemblyBuilder: AssemblyBuilderProtocol, navigationController: UINavigationController) {
         self.assemblyBuilder = assemblyBuilder
+        self.navigationController = navigationController
     }
     
-    func initialViewController() -> UIViewController? {
-        guard let listViewController = assemblyBuilder?.createList(router: self) else { return nil }
-        return listViewController
+    func initialViewController() {
+        if let navigationController = navigationController {
+            guard let listViewController = assemblyBuilder?.createList(router: self) else { return }
+            navigationController.viewControllers = [listViewController]
+        }
     }
     
-    func showStockModule(from view: UIViewController, stock: StockModel?) {
+    func showSearchModule() {
+        guard let searchViewController = assemblyBuilder?.createSearch(router: self) else { return }
+        navigationController?.pushViewController(searchViewController, animated: false)
+    }
+    
+    func showStockModule(stock: PreparedStock?) {
         guard let stockViewController = assemblyBuilder?.createStock(stock: stock, router: self) else { return }
-        stockViewController.modalPresentationStyle = .fullScreen
-        view.present(stockViewController, animated: true, completion: nil)
+        navigationController?.pushViewController(stockViewController, animated: true)
 
     }
     
-    func popToRoot(from view: UIViewController) {
-        view.dismiss(animated: true, completion: nil)
+    func popToRoot() {
+        if let navigationController = navigationController {
+            navigationController.popToRootViewController(animated: true)
+        }
+    }
+    
+    func popToRootWithoutAnimated() {
+        if let navigationController = navigationController {
+            navigationController.popToRootViewController(animated: false)
+        }
     }
     
 }

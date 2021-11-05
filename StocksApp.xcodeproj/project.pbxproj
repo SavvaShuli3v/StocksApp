@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D24E16F27205A6600A30B58 /* TickerCoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4D24E16D27205A6600A30B58 /* TickerCoreDataModel.xcdatamodeld */; };
 		4D3466612707923B003B4A99 /* ListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3466602707923B003B4A99 /* ListPresenter.swift */; };
 		4D34666327079322003B4A99 /* AssemblyModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D34666227079322003B4A99 /* AssemblyModuleBuilder.swift */; };
 		4D34666727079591003B4A99 /* ListSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D34666627079591003B4A99 /* ListSearchCell.swift */; };
@@ -18,8 +19,24 @@
 		4D3466772707A4EA003B4A99 /* ListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3466762707A4EA003B4A99 /* ListModel.swift */; };
 		4D3466792707A613003B4A99 /* ListStocksHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3466782707A613003B4A99 /* ListStocksHeader.swift */; };
 		4D34667F2707D2E3003B4A99 /* AnimatedStockButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D34667E2707D2E3003B4A99 /* AnimatedStockButton.swift */; };
+		4D4C7FD127349EB2002D87BC /* RequestsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4C7FD027349EB2002D87BC /* RequestsView.swift */; };
+		4D4C7FD42734A79A002D87BC /* StockBarCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4C7FD32734A79A002D87BC /* StockBarCollectionView.swift */; };
+		4D4C7FD62734AA9E002D87BC /* StockBarCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4C7FD52734AA9E002D87BC /* StockBarCollectionCell.swift */; };
 		4D5B65E8270B247A001F7F15 /* SimpleAnimatedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5B65E7270B247A001F7F15 /* SimpleAnimatedButton.swift */; };
+		4D62F6B22730B80500946902 /* RequestCollectionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D62F6B12730B80500946902 /* RequestCollectionLayout.swift */; };
+		4D73365D271A0DE300B220EF /* AboutCompanyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D73365C271A0DE300B220EF /* AboutCompanyCell.swift */; };
+		4D73365F271AF7BF00B220EF /* SearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D73365E271AF7BF00B220EF /* SearchPresenter.swift */; };
+		4D733668271B32D000B220EF /* RequestCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D733667271B32D000B220EF /* RequestCollectionCell.swift */; };
 		4D7A0E532708BED1002A6274 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7A0E522708BED1002A6274 /* SearchViewController.swift */; };
+		4DA6B5C82716DC3C00BAB0E2 /* ChartTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA6B5C72716DC3C00BAB0E2 /* ChartTableView.swift */; };
+		4DA6B5CA2716FFD300BAB0E2 /* Formatter + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA6B5C92716FFD300BAB0E2 /* Formatter + Extension.swift */; };
+		4DA6B5CD2717014F00BAB0E2 /* Double + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA6B5CC2717014F00BAB0E2 /* Double + Extension.swift */; };
+		4DA6B5CF271704D500BAB0E2 /* String + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA6B5CE271704D500BAB0E2 /* String + Extension.swift */; };
+		4DA6B5D12717323F00BAB0E2 /* SummaryStockCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA6B5D02717323F00BAB0E2 /* SummaryStockCell.swift */; };
+		4DA6B5D32717329300BAB0E2 /* SummaryTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA6B5D22717329300BAB0E2 /* SummaryTableView.swift */; };
+		4DA6B5D62717842F00BAB0E2 /* StockPriceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA6B5D52717842F00BAB0E2 /* StockPriceTableViewCell.swift */; };
+		4DA6B5D827185C3800BAB0E2 /* PreparedStock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA6B5D727185C3800BAB0E2 /* PreparedStock.swift */; };
+		4DA6B5DB271872D000BAB0E2 /* SummaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA6B5DA271872D000BAB0E2 /* SummaryTableViewCell.swift */; };
 		4DACEA23271382E100DA769D /* StockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DACEA22271382E100DA769D /* StockViewController.swift */; };
 		4DACEA262713868100DA769D /* UIStockBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DACEA252713868100DA769D /* UIStockBar.swift */; };
 		4DAEE7F927078AEA008D1D77 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAEE7F827078AEA008D1D77 /* AppDelegate.swift */; };
@@ -29,20 +46,22 @@
 		4DAEE81127078C29008D1D77 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAEE81027078C29008D1D77 /* ListViewController.swift */; };
 		4DAEE81327078F22008D1D77 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 4DAEE81227078F22008D1D77 /* .gitignore */; };
 		4DAEE8192707903A008D1D77 /* ListStocksTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAEE81827079039008D1D77 /* ListStocksTableView.swift */; };
+		4DAEFC72273367AF008824ED /* PopularRequestCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAEFC71273367AF008824ED /* PopularRequestCollectionView.swift */; };
 		4DBEB20E270CCB63005A7E6D /* PreconditionFailedCalls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBEB20D270CCB63005A7E6D /* PreconditionFailedCalls.swift */; };
 		4DBEB215270CD82F005A7E6D /* ImageNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBEB214270CD82F005A7E6D /* ImageNames.swift */; };
 		4DD87A79270A451A00EC73D3 /* CustomSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD87A78270A451A00EC73D3 /* CustomSearchBar.swift */; };
 		4DD87A7B270A5D8F00EC73D3 /* UISearchBar + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD87A7A270A5D8F00EC73D3 /* UISearchBar + Extension.swift */; };
-		4DDB2E71271479AE0037AFDF /* PriceStockCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDB2E70271479AE0037AFDF /* PriceStockCell.swift */; };
+		4DDB2E71271479AE0037AFDF /* ChartStockCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDB2E70271479AE0037AFDF /* ChartStockCell.swift */; };
 		4DDB2E742714B78E0037AFDF /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDB2E732714B78E0037AFDF /* NetworkService.swift */; };
 		4DDB2E782714B9410037AFDF /* ServiceTocken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDB2E772714B9410037AFDF /* ServiceTocken.swift */; };
-		4DDB2E7A2714C4F80037AFDF /* StockModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDB2E792714C4F80037AFDF /* StockModel.swift */; };
+		4DDB2E7A2714C4F80037AFDF /* NetworkStock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDB2E792714C4F80037AFDF /* NetworkStock.swift */; };
 		4DDB2E7D2714C69A0037AFDF /* DataStocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDB2E7C2714C69A0037AFDF /* DataStocks.swift */; };
 		4DDB2E7F2715CEC80037AFDF /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDB2E7E2715CEC80037AFDF /* Router.swift */; };
 		4DDB2E81271612A00037AFDF /* StockPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDB2E80271612A00037AFDF /* StockPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4D24E16E27205A6600A30B58 /* TickerCoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TickerCoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		4D3466602707923B003B4A99 /* ListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPresenter.swift; sourceTree = "<group>"; };
 		4D34666227079322003B4A99 /* AssemblyModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssemblyModuleBuilder.swift; sourceTree = "<group>"; };
 		4D34666627079591003B4A99 /* ListSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSearchCell.swift; sourceTree = "<group>"; };
@@ -54,8 +73,24 @@
 		4D3466762707A4EA003B4A99 /* ListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListModel.swift; sourceTree = "<group>"; };
 		4D3466782707A613003B4A99 /* ListStocksHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListStocksHeader.swift; sourceTree = "<group>"; };
 		4D34667E2707D2E3003B4A99 /* AnimatedStockButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedStockButton.swift; sourceTree = "<group>"; };
+		4D4C7FD027349EB2002D87BC /* RequestsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsView.swift; sourceTree = "<group>"; };
+		4D4C7FD32734A79A002D87BC /* StockBarCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockBarCollectionView.swift; sourceTree = "<group>"; };
+		4D4C7FD52734AA9E002D87BC /* StockBarCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockBarCollectionCell.swift; sourceTree = "<group>"; };
 		4D5B65E7270B247A001F7F15 /* SimpleAnimatedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleAnimatedButton.swift; sourceTree = "<group>"; };
+		4D62F6B12730B80500946902 /* RequestCollectionLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestCollectionLayout.swift; sourceTree = "<group>"; };
+		4D73365C271A0DE300B220EF /* AboutCompanyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutCompanyCell.swift; sourceTree = "<group>"; };
+		4D73365E271AF7BF00B220EF /* SearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPresenter.swift; sourceTree = "<group>"; };
+		4D733667271B32D000B220EF /* RequestCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestCollectionCell.swift; sourceTree = "<group>"; };
 		4D7A0E522708BED1002A6274 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		4DA6B5C72716DC3C00BAB0E2 /* ChartTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartTableView.swift; sourceTree = "<group>"; };
+		4DA6B5C92716FFD300BAB0E2 /* Formatter + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Formatter + Extension.swift"; sourceTree = "<group>"; };
+		4DA6B5CC2717014F00BAB0E2 /* Double + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double + Extension.swift"; sourceTree = "<group>"; };
+		4DA6B5CE271704D500BAB0E2 /* String + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Extension.swift"; sourceTree = "<group>"; };
+		4DA6B5D02717323F00BAB0E2 /* SummaryStockCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryStockCell.swift; sourceTree = "<group>"; };
+		4DA6B5D22717329300BAB0E2 /* SummaryTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryTableView.swift; sourceTree = "<group>"; };
+		4DA6B5D52717842F00BAB0E2 /* StockPriceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockPriceTableViewCell.swift; sourceTree = "<group>"; };
+		4DA6B5D727185C3800BAB0E2 /* PreparedStock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreparedStock.swift; sourceTree = "<group>"; };
+		4DA6B5DA271872D000BAB0E2 /* SummaryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryTableViewCell.swift; sourceTree = "<group>"; };
 		4DACEA22271382E100DA769D /* StockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockViewController.swift; sourceTree = "<group>"; };
 		4DACEA252713868100DA769D /* UIStockBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStockBar.swift; sourceTree = "<group>"; };
 		4DAEE7F527078AEA008D1D77 /* StocksApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StocksApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -67,14 +102,15 @@
 		4DAEE81027078C29008D1D77 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		4DAEE81227078F22008D1D77 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		4DAEE81827079039008D1D77 /* ListStocksTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListStocksTableView.swift; sourceTree = "<group>"; };
+		4DAEFC71273367AF008824ED /* PopularRequestCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularRequestCollectionView.swift; sourceTree = "<group>"; };
 		4DBEB20D270CCB63005A7E6D /* PreconditionFailedCalls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreconditionFailedCalls.swift; sourceTree = "<group>"; };
 		4DBEB214270CD82F005A7E6D /* ImageNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageNames.swift; sourceTree = "<group>"; };
 		4DD87A78270A451A00EC73D3 /* CustomSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSearchBar.swift; sourceTree = "<group>"; };
 		4DD87A7A270A5D8F00EC73D3 /* UISearchBar + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISearchBar + Extension.swift"; sourceTree = "<group>"; };
-		4DDB2E70271479AE0037AFDF /* PriceStockCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceStockCell.swift; sourceTree = "<group>"; };
+		4DDB2E70271479AE0037AFDF /* ChartStockCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartStockCell.swift; sourceTree = "<group>"; };
 		4DDB2E732714B78E0037AFDF /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		4DDB2E772714B9410037AFDF /* ServiceTocken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceTocken.swift; sourceTree = "<group>"; };
-		4DDB2E792714C4F80037AFDF /* StockModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockModel.swift; sourceTree = "<group>"; };
+		4DDB2E792714C4F80037AFDF /* NetworkStock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStock.swift; sourceTree = "<group>"; };
 		4DDB2E7C2714C69A0037AFDF /* DataStocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStocks.swift; sourceTree = "<group>"; };
 		4DDB2E7E2715CEC80037AFDF /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		4DDB2E80271612A00037AFDF /* StockPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockPresenter.swift; sourceTree = "<group>"; };
@@ -91,6 +127,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4D24E1462720539F00A30B58 /* CoreDataService */ = {
+			isa = PBXGroup;
+			children = (
+				4D24E16D27205A6600A30B58 /* TickerCoreDataModel.xcdatamodeld */,
+			);
+			path = CoreDataService;
+			sourceTree = "<group>";
+		};
 		4D34665D2707920B003B4A99 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -140,6 +184,26 @@
 			path = SimpleButton;
 			sourceTree = "<group>";
 		};
+		4D4C7FCF27349E20002D87BC /* RequestsView */ = {
+			isa = PBXGroup;
+			children = (
+				4DAEFC71273367AF008824ED /* PopularRequestCollectionView.swift */,
+				4D733667271B32D000B220EF /* RequestCollectionCell.swift */,
+				4D62F6B12730B80500946902 /* RequestCollectionLayout.swift */,
+				4D4C7FD027349EB2002D87BC /* RequestsView.swift */,
+			);
+			path = RequestsView;
+			sourceTree = "<group>";
+		};
+		4D4C7FD22734A77E002D87BC /* ForStockBar */ = {
+			isa = PBXGroup;
+			children = (
+				4D4C7FD32734A79A002D87BC /* StockBarCollectionView.swift */,
+				4D4C7FD52734AA9E002D87BC /* StockBarCollectionCell.swift */,
+			);
+			path = ForStockBar;
+			sourceTree = "<group>";
+		};
 		4D7A0E4E2708BE94002A6274 /* SearchModule */ = {
 			isa = PBXGroup;
 			children = (
@@ -160,6 +224,7 @@
 		4D7A0E502708BEA8002A6274 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				4D73365E271AF7BF00B220EF /* SearchPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -201,15 +266,39 @@
 		4D7A0E572708BF30002A6274 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4DA6B5D727185C3800BAB0E2 /* PreparedStock.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		4DA6B5C62716DC1300BAB0E2 /* ForChartStockCell */ = {
+			isa = PBXGroup;
+			children = (
+				4DA6B5C72716DC3C00BAB0E2 /* ChartTableView.swift */,
+				4DA6B5D52717842F00BAB0E2 /* StockPriceTableViewCell.swift */,
+			);
+			path = ForChartStockCell;
+			sourceTree = "<group>";
+		};
+		4DA6B5D927186BC000BAB0E2 /* ForSummaryStockCell */ = {
+			isa = PBXGroup;
+			children = (
+				4DA6B5D22717329300BAB0E2 /* SummaryTableView.swift */,
+				4DA6B5DA271872D000BAB0E2 /* SummaryTableViewCell.swift */,
+				4D73365C271A0DE300B220EF /* AboutCompanyCell.swift */,
+			);
+			path = ForSummaryStockCell;
 			sourceTree = "<group>";
 		};
 		4DACEA242713842A00DA769D /* ForStockModule */ = {
 			isa = PBXGroup;
 			children = (
 				4DACEA252713868100DA769D /* UIStockBar.swift */,
-				4DDB2E70271479AE0037AFDF /* PriceStockCell.swift */,
+				4DDB2E70271479AE0037AFDF /* ChartStockCell.swift */,
+				4DA6B5D02717323F00BAB0E2 /* SummaryStockCell.swift */,
+				4D4C7FD22734A77E002D87BC /* ForStockBar */,
+				4DA6B5C62716DC1300BAB0E2 /* ForChartStockCell */,
+				4DA6B5D927186BC000BAB0E2 /* ForSummaryStockCell */,
 			);
 			path = ForStockModule;
 			sourceTree = "<group>";
@@ -267,6 +356,9 @@
 				4DAEE80E27078BC5008D1D77 /* UIView + Extension.swift */,
 				4D34667227079BE5003B4A99 /* UIColor + Extension.swift */,
 				4DD87A7A270A5D8F00EC73D3 /* UISearchBar + Extension.swift */,
+				4DA6B5C92716FFD300BAB0E2 /* Formatter + Extension.swift */,
+				4DA6B5CC2717014F00BAB0E2 /* Double + Extension.swift */,
+				4DA6B5CE271704D500BAB0E2 /* String + Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -333,6 +425,7 @@
 			isa = PBXGroup;
 			children = (
 				4DD87A78270A451A00EC73D3 /* CustomSearchBar.swift */,
+				4D4C7FCF27349E20002D87BC /* RequestsView */,
 			);
 			path = ForSearchModule;
 			sourceTree = "<group>";
@@ -342,6 +435,7 @@
 			children = (
 				4DDB2E7B2714C68C0037AFDF /* Data */,
 				4DDB2E752714B82F0037AFDF /* NetworkService */,
+				4D24E1462720539F00A30B58 /* CoreDataService */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -351,7 +445,7 @@
 			children = (
 				4DDB2E762714B92C0037AFDF /* Tocken */,
 				4DDB2E732714B78E0037AFDF /* NetworkService.swift */,
-				4DDB2E792714C4F80037AFDF /* StockModel.swift */,
+				4DDB2E792714C4F80037AFDF /* NetworkStock.swift */,
 			);
 			path = NetworkService;
 			sourceTree = "<group>";
@@ -444,34 +538,52 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D34666F27079858003B4A99 /* Styles.swift in Sources */,
+				4DA6B5D827185C3800BAB0E2 /* PreparedStock.swift in Sources */,
 				4D5B65E8270B247A001F7F15 /* SimpleAnimatedButton.swift in Sources */,
-				4DDB2E7A2714C4F80037AFDF /* StockModel.swift in Sources */,
+				4DDB2E7A2714C4F80037AFDF /* NetworkStock.swift in Sources */,
 				4DBEB20E270CCB63005A7E6D /* PreconditionFailedCalls.swift in Sources */,
 				4DACEA262713868100DA769D /* UIStockBar.swift in Sources */,
 				4DD87A7B270A5D8F00EC73D3 /* UISearchBar + Extension.swift in Sources */,
 				4DDB2E742714B78E0037AFDF /* NetworkService.swift in Sources */,
+				4D24E16F27205A6600A30B58 /* TickerCoreDataModel.xcdatamodeld in Sources */,
+				4DA6B5D12717323F00BAB0E2 /* SummaryStockCell.swift in Sources */,
 				4DDB2E81271612A00037AFDF /* StockPresenter.swift in Sources */,
+				4D4C7FD42734A79A002D87BC /* StockBarCollectionView.swift in Sources */,
+				4DA6B5DB271872D000BAB0E2 /* SummaryTableViewCell.swift in Sources */,
+				4D733668271B32D000B220EF /* RequestCollectionCell.swift in Sources */,
+				4D73365D271A0DE300B220EF /* AboutCompanyCell.swift in Sources */,
 				4D3466772707A4EA003B4A99 /* ListModel.swift in Sources */,
+				4DA6B5D32717329300BAB0E2 /* SummaryTableView.swift in Sources */,
 				4D3466612707923B003B4A99 /* ListPresenter.swift in Sources */,
+				4D62F6B22730B80500946902 /* RequestCollectionLayout.swift in Sources */,
+				4D4C7FD127349EB2002D87BC /* RequestsView.swift in Sources */,
 				4D3466792707A613003B4A99 /* ListStocksHeader.swift in Sources */,
 				4DAEE81127078C29008D1D77 /* ListViewController.swift in Sources */,
 				4D34666727079591003B4A99 /* ListSearchCell.swift in Sources */,
 				4DDB2E7D2714C69A0037AFDF /* DataStocks.swift in Sources */,
 				4D34667F2707D2E3003B4A99 /* AnimatedStockButton.swift in Sources */,
 				4D34667327079BE5003B4A99 /* UIColor + Extension.swift in Sources */,
+				4D73365F271AF7BF00B220EF /* SearchPresenter.swift in Sources */,
 				4DACEA23271382E100DA769D /* StockViewController.swift in Sources */,
+				4D4C7FD62734AA9E002D87BC /* StockBarCollectionCell.swift in Sources */,
 				4DBEB215270CD82F005A7E6D /* ImageNames.swift in Sources */,
+				4DA6B5CA2716FFD300BAB0E2 /* Formatter + Extension.swift in Sources */,
 				4D34666A270795C7003B4A99 /* SimpleButton.swift in Sources */,
 				4DAEE80F27078BC5008D1D77 /* UIView + Extension.swift in Sources */,
+				4DA6B5D62717842F00BAB0E2 /* StockPriceTableViewCell.swift in Sources */,
+				4DAEFC72273367AF008824ED /* PopularRequestCollectionView.swift in Sources */,
 				4D7A0E532708BED1002A6274 /* SearchViewController.swift in Sources */,
 				4DDB2E7F2715CEC80037AFDF /* Router.swift in Sources */,
 				4D34667127079865003B4A99 /* Localization.swift in Sources */,
 				4DAEE7F927078AEA008D1D77 /* AppDelegate.swift in Sources */,
+				4DA6B5CD2717014F00BAB0E2 /* Double + Extension.swift in Sources */,
+				4DA6B5C82716DC3C00BAB0E2 /* ChartTableView.swift in Sources */,
 				4DAEE8192707903A008D1D77 /* ListStocksTableView.swift in Sources */,
 				4D34666327079322003B4A99 /* AssemblyModuleBuilder.swift in Sources */,
 				4D3466752707A283003B4A99 /* ListStocksCell.swift in Sources */,
+				4DA6B5CF271704D500BAB0E2 /* String + Extension.swift in Sources */,
 				4DD87A79270A451A00EC73D3 /* CustomSearchBar.swift in Sources */,
-				4DDB2E71271479AE0037AFDF /* PriceStockCell.swift in Sources */,
+				4DDB2E71271479AE0037AFDF /* ChartStockCell.swift in Sources */,
 				4DDB2E782714B9410037AFDF /* ServiceTocken.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -686,6 +798,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		4D24E16D27205A6600A30B58 /* TickerCoreDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				4D24E16E27205A6600A30B58 /* TickerCoreDataModel.xcdatamodel */,
+			);
+			currentVersion = 4D24E16E27205A6600A30B58 /* TickerCoreDataModel.xcdatamodel */;
+			path = TickerCoreDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 4DAEE7ED27078AEA008D1D77 /* Project object */;
 }

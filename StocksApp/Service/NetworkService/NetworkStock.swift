@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct StockModel: Decodable {
+struct NetworkStock: Decodable {
     var symbol: String
     var price: Double
     var mktCap: Int

@@ -9,7 +9,10 @@ import UIKit
 
 final class SearchViewController: UIViewController {
     
+    var presenter: SearchViewPresenterProtocol!
+    
     private lazy var searchBar = CustomSearchBar()
+    private lazy var requestsView = RequestsView()
     
     // MARK: - Lifecycle
     
@@ -17,17 +20,30 @@ final class SearchViewController: UIViewController {
         super.viewDidLoad()
         
         setupUI()
+        //searchBar.search.
     }
-    
+
     // MARK: - Private Methods
     
     private func setupUI() {
         view.backgroundColor = Styles.Colors.white
         setupSearchBar()
-
+        setupRequestsView()
     }
     
-    private func setupSearchBar() {
+}
+
+// MARK: - Presenter Binding
+
+extension SearchViewController: SearchViewProtocol {
+
+}
+
+// MARK: - private extension SearchViewController for setup UI
+
+private extension SearchViewController {
+    
+    func setupSearchBar() {
         self.view.addSubview(searchBar)
         self.searchBar.translatesAutoresizingMaskIntoConstraints = false
         self.searchBar.top(22, to: self.view.safeAreaLayoutGuide.topAnchor)
@@ -35,12 +51,18 @@ final class SearchViewController: UIViewController {
         self.searchBar.trailing(-16)
         self.searchBar.height(48)
         
-        self.searchBar.backButton.setAction {
-            //self.dismiss(animated: false, completion: nil)
-            let stockVC = StockViewController()
-            stockVC.modalPresentationStyle = .fullScreen
-            self.present(stockVC, animated: false, completion: nil)
+        self.searchBar.backButton.setAction { [weak self] in
+            self?.presenter.tappedToBack()
         }
     }
-
+    
+    func setupRequestsView() {
+        self.view.addSubview(requestsView)
+        self.requestsView.translatesAutoresizingMaskIntoConstraints = false
+        self.requestsView.top(0, to: self.searchBar.bottomAnchor)
+        self.requestsView.leading()
+        self.requestsView.trailing()
+        self.requestsView.bottom()
+    }
+    
 }

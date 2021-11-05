@@ -186,7 +186,7 @@ extension ListStocksTableView: UITableViewDelegate, UITableViewDataSource {
         
         let localY = y + localScrollTop!
         
-        if localY < 45  {
+        if localY < 45 {
             DispatchQueue.main.async {
                 self.scrollToRow(at: IndexPath.init(row: 0, section: 0), at: .middle, animated: true)
             }
