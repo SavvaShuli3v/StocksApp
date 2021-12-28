@@ -17,7 +17,9 @@ final class NetworkService: NetworkServiceProtocol {
     
     func getStock(for ticker: String, completion: @escaping (Result<NetworkStock?, Error>) -> Void) {
         let tocken = Tocken.tockenString
-        guard let url = URL(string: "https://financialmodelingprep.com/api/v3/profile/\(ticker)?apikey=\(tocken)") else {
+        let URLString = "https://financialmodelingprep.com/api/v3/profile/\(ticker)?apikey=\(tocken)"
+        
+        guard let url = URL(string: URLString) else {
             return
         }
         
@@ -30,10 +32,10 @@ final class NetworkService: NetworkServiceProtocol {
                (response as? HTTPURLResponse)?.statusCode == 200 {
                 
                 do {
+                    self.setErrorAnswer(with: data)
                     let model = try JSONDecoder().decode([NetworkStock].self, from: data)
                     completion(.success(model[0]))
                 } catch {
-                    print(data)
                     print("JSON pasrsing error: " + error.localizedDescription)
                 }
             } else {
@@ -67,5 +69,24 @@ final class NetworkService: NetworkServiceProtocol {
 private extension NetworkServiceProtocol {
     func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
         URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
+    }
+}
+
+private extension NetworkServiceProtocol {
+    func setErrorAnswer(with data: Data?) {
+        if let data = data {
+            do {
+                let jsonObject = try JSONSerialization.jsonObject(with: data)
+                guard
+                    let json = jsonObject as? [[String: Any]],
+                    let _ = json[0]["symbol"] as? String
+                else {
+                    print(jsonObject)
+                    return
+                }
+            } catch {
+                print("json")
+            }
+        }
     }
 }

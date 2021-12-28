@@ -10,12 +10,14 @@ import UIKit
 final class RequestCollectionCell: UICollectionViewCell {
     
     lazy var requestLabel = UILabel()
+    lazy var mainButton = AnimatedStockButton()
     
     // MARK: - Init
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
+        setupButton()
     }
     
     required init?(coder: NSCoder) {
@@ -34,6 +36,15 @@ final class RequestCollectionCell: UICollectionViewCell {
         self.requestLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         
         self.requestLabel.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
+    }
+    
+    private func setupButton() {
+        self.addSubview(mainButton)
+        self.mainButton.translatesAutoresizingMaskIntoConstraints = false
+        self.mainButton.allConstraints(to: self)
+        self.mainButton.backgroundColor = .clear
+        
+        self.mainButton.layer.cornerRadius = 20
     }
     
 }

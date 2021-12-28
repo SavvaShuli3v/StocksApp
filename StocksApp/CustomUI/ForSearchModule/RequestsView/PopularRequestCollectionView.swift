@@ -24,6 +24,10 @@ final class PopularRequestCollectionView: UICollectionView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func touchesShouldCancel(in view: UIView) -> Bool {
+        return true
+    }
+    
     // MARK: - Private Methods
     
     private func setupCollectionView() {

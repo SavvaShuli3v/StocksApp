@@ -48,10 +48,6 @@ final class CustomSearchBar: UIView {
         self.backButton.backgroundColor = .white
         self.backButton.setImage(UIImage(named: ImageNames.arrow), for: .normal)
         self.backButton.imageEdgeInsets = UIEdgeInsets(top: 17, left: 18, bottom: 17, right: 5)
-        
-        self.backButton.setAction {
-            print("back")
-        }
     }
     
     private func setupSearch() {

@@ -151,6 +151,7 @@ private extension StockViewController {
         self.collectionView.isPagingEnabled = true
         self.collectionView.showsHorizontalScrollIndicator = false
     }
+    
 }
 
 private enum CollectionCellID {

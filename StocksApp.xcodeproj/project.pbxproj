@@ -58,6 +58,9 @@
 		4DDB2E7D2714C69A0037AFDF /* DataStocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDB2E7C2714C69A0037AFDF /* DataStocks.swift */; };
 		4DDB2E7F2715CEC80037AFDF /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDB2E7E2715CEC80037AFDF /* Router.swift */; };
 		4DDB2E81271612A00037AFDF /* StockPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDB2E80271612A00037AFDF /* StockPresenter.swift */; };
+		4DE6DD98273C02B3000C9184 /* SearchTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE6DD97273C02B3000C9184 /* SearchTableView.swift */; };
+		4DE6DD9A273C1936000C9184 /* SearchStocksHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE6DD99273C1936000C9184 /* SearchStocksHeader.swift */; };
+		4DF401692735B39A006BCC5A /* FollowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF401682735B39A006BCC5A /* FollowButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -114,6 +117,9 @@
 		4DDB2E7C2714C69A0037AFDF /* DataStocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStocks.swift; sourceTree = "<group>"; };
 		4DDB2E7E2715CEC80037AFDF /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		4DDB2E80271612A00037AFDF /* StockPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockPresenter.swift; sourceTree = "<group>"; };
+		4DE6DD97273C02B3000C9184 /* SearchTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableView.swift; sourceTree = "<group>"; };
+		4DE6DD99273C1936000C9184 /* SearchStocksHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStocksHeader.swift; sourceTree = "<group>"; };
+		4DF401682735B39A006BCC5A /* FollowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -296,6 +302,7 @@
 				4DACEA252713868100DA769D /* UIStockBar.swift */,
 				4DDB2E70271479AE0037AFDF /* ChartStockCell.swift */,
 				4DA6B5D02717323F00BAB0E2 /* SummaryStockCell.swift */,
+				4DF401682735B39A006BCC5A /* FollowButton.swift */,
 				4D4C7FD22734A77E002D87BC /* ForStockBar */,
 				4DA6B5C62716DC1300BAB0E2 /* ForChartStockCell */,
 				4DA6B5D927186BC000BAB0E2 /* ForSummaryStockCell */,
@@ -426,6 +433,8 @@
 			children = (
 				4DD87A78270A451A00EC73D3 /* CustomSearchBar.swift */,
 				4D4C7FCF27349E20002D87BC /* RequestsView */,
+				4DE6DD97273C02B3000C9184 /* SearchTableView.swift */,
+				4DE6DD99273C1936000C9184 /* SearchStocksHeader.swift */,
 			);
 			path = ForSearchModule;
 			sourceTree = "<group>";
@@ -537,11 +546,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DE6DD9A273C1936000C9184 /* SearchStocksHeader.swift in Sources */,
 				4D34666F27079858003B4A99 /* Styles.swift in Sources */,
 				4DA6B5D827185C3800BAB0E2 /* PreparedStock.swift in Sources */,
 				4D5B65E8270B247A001F7F15 /* SimpleAnimatedButton.swift in Sources */,
 				4DDB2E7A2714C4F80037AFDF /* NetworkStock.swift in Sources */,
 				4DBEB20E270CCB63005A7E6D /* PreconditionFailedCalls.swift in Sources */,
+				4DF401692735B39A006BCC5A /* FollowButton.swift in Sources */,
 				4DACEA262713868100DA769D /* UIStockBar.swift in Sources */,
 				4DD87A7B270A5D8F00EC73D3 /* UISearchBar + Extension.swift in Sources */,
 				4DDB2E742714B78E0037AFDF /* NetworkService.swift in Sources */,
@@ -577,6 +588,7 @@
 				4D34667127079865003B4A99 /* Localization.swift in Sources */,
 				4DAEE7F927078AEA008D1D77 /* AppDelegate.swift in Sources */,
 				4DA6B5CD2717014F00BAB0E2 /* Double + Extension.swift in Sources */,
+				4DE6DD98273C02B3000C9184 /* SearchTableView.swift in Sources */,
 				4DA6B5C82716DC3C00BAB0E2 /* ChartTableView.swift in Sources */,
 				4DAEE8192707903A008D1D77 /* ListStocksTableView.swift in Sources */,
 				4D34666327079322003B4A99 /* AssemblyModuleBuilder.swift in Sources */,

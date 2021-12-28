@@ -10,6 +10,7 @@ import UIKit
 final class ChartStockCell: UICollectionViewCell {
     
     private lazy var chartTableView = ChartTableView()
+    private lazy var followButton = FollowButton()
     
     // MARK: - Init
     
@@ -32,6 +33,7 @@ final class ChartStockCell: UICollectionViewCell {
     
     private func setupUI() {
         setupChartTableView()
+        setupFollowButton()
     }
 }
 
@@ -42,6 +44,15 @@ private extension ChartStockCell {
         self.addSubview(chartTableView)
         self.chartTableView.translatesAutoresizingMaskIntoConstraints = false
         self.chartTableView.allConstraints(to: self)
+    }
+    
+    func setupFollowButton() {
+        self.addSubview(followButton)
+        self.followButton.translatesAutoresizingMaskIntoConstraints = false
+        self.followButton.bottom(0, to: self.safeAreaLayoutGuide.bottomAnchor)
+        self.followButton.leading(16, to: self.leadingAnchor)
+        self.followButton.trailing(-16, to: self.trailingAnchor)
+        self.followButton.height(56)
     }
 
 }

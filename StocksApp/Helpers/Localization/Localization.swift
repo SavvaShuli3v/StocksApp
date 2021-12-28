@@ -24,4 +24,6 @@ enum Localization {
     
     static let popularRequests = "Popular requests"
     static let youAreSearchedForThis = "You’ve searched for this"
+    
+    static let follow = "Follow"
 }

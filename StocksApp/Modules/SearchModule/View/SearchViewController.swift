@@ -14,21 +14,25 @@ final class SearchViewController: UIViewController {
     private lazy var searchBar = CustomSearchBar()
     private lazy var requestsView = RequestsView()
     
+    private lazy var searchTableView = SearchTableView()
+    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupUI()
-        //searchBar.search.
+        self.searchBar.search.becomeFirstResponder()
     }
 
     // MARK: - Private Methods
     
     private func setupUI() {
         view.backgroundColor = Styles.Colors.white
+        
         setupSearchBar()
         setupRequestsView()
+        setupSearchTableView()
     }
     
 }
@@ -63,6 +67,15 @@ private extension SearchViewController {
         self.requestsView.leading()
         self.requestsView.trailing()
         self.requestsView.bottom()
+    }
+    
+    func setupSearchTableView() {
+        self.view.addSubview(searchTableView)
+        self.searchTableView.translatesAutoresizingMaskIntoConstraints = false
+        self.searchTableView.top(0, to: self.searchBar.bottomAnchor)
+        self.searchTableView.leading()
+        self.searchTableView.trailing()
+        self.searchTableView.bottom()
     }
     
 }
